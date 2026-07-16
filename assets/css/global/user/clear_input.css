@@ -1,0 +1,39 @@
+/*
+Programmer Name: Mr. Khoo Lay Bin
+Program Name: /assets/css/global/user/clear_input.css
+Description: global clear input btn for all txt box, txt area, search bar, .........
+First Written on: Wednesday, 19-May-2026
+Edited on: Wednesday, 27-May-2026
+*/
+
+
+.clear-btn {
+    display: none;
+    background: transparent;
+    border: none;
+    padding: 0;
+    margin-left: 6px;
+    margin-right: 4px;
+    position: relative;
+    z-index: 1;
+    cursor: url("/Implose.gg-src/assets/images/icons/hand.svg") 8 2, pointer;
+}
+
+.clear-btn img {
+    width: 12px;
+    height: 12px;
+    opacity: 0.5;
+    transition: opacity 0.2s ease;
+    filter: brightness(0) invert(1);
+    pointer-events: none;
+}
+
+.clear-btn:hover img {
+    opacity: 1;
+    filter: brightness(0) invert(1) drop-shadow(0 0px 4px rgba(0, 0, 0, 0.25));
+}
+
+.has-text .clear-btn {
+    display: flex;
+    align-items: center;
+}

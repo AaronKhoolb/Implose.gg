@@ -1,0 +1,43 @@
+/*
+Programmer Name: Mr. Khoo Lay Bin
+Program Name: /assets/css/pages/pdf_viewer.css
+Description: styles for PDF viewer page
+First Written on: Monday, 29-Jun-2026
+Edited on: Monday, 29-Jun-2026
+*/
+
+.main-content {
+    padding: 20px 80px 0px 80px;
+    height: 98vh;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.pdf-back {
+    align-self: flex-start;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--text-muted);
+    text-decoration: none;
+    font-weight: var(--bold);
+    font-size: 20px;
+    margin-bottom: 16px;
+}
+.pdf-back:hover {
+    color: var(--text-light);
+}
+.pdf-back img {
+    width: 16px;
+    height: 16px;
+    transform: rotate(90deg);
+    filter: brightness(0) invert(1);
+}
+
+.pdf-frame {
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+}

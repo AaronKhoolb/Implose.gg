@@ -1,0 +1,565 @@
+/*
+Programmer Name: Damian Loh Yi Feng
+Program Name: /assets/css/pages/admin_achievement.css
+Description: Admin Achievement Management page styling
+            - Page header + create button
+            - Stat cards row (shared design)
+            - Search + filter toolbar
+            - Achievements table with 50x50 badge thumbnail
+            - Unlock-rate visual bar
+            - Badge preview for the create/edit form
+First Written on: Saturday, 27-Jun-2026
+Edited on: Saturday, 27-Jun-2026
+*/
+
+
+/* ── Page Header ── */
+
+.ach-page-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 28px;
+    flex-wrap: wrap;
+}
+
+.ach-page-header-left h1 {
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--admin-text);
+    margin: 0 0 6px;
+    letter-spacing: -0.01em;
+}
+
+.ach-page-header-left p {
+    font-size: 14px;
+    color: var(--admin-text-muted);
+    margin: 0;
+}
+
+.btn-create-achievement {
+    padding: 10px 22px;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--admin-bg);
+    background: var(--admin-accent);
+    border: 1px solid var(--admin-accent);
+    border-radius: var(--admin-radius-sm);
+    cursor: pointer;
+    text-decoration: none;
+    transition: all var(--admin-transition);
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    box-shadow: 0 0 16px rgba(34, 211, 238, 0.28);
+    line-height: 1;
+    white-space: nowrap;
+}
+
+.btn-create-achievement:hover {
+    background: #38e4ff;
+    border-color: #38e4ff;
+    box-shadow: 0 0 26px rgba(34, 211, 238, 0.5);
+    transform: translateY(-1px);
+}
+
+.btn-create-achievement:active {
+    transform: translateY(0);
+}
+
+
+/* ── Stat Cards (shared shape, defined locally so this page doesn't depend on another page's CSS) ── */
+
+.ach-stats-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-bottom: 28px;
+}
+
+.stat-card {
+    background: var(--admin-surface);
+    border: 1px solid var(--admin-sidebar-border);
+    border-radius: var(--admin-radius);
+    padding: 24px 26px 28px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    transition: border-color var(--admin-transition), box-shadow var(--admin-transition);
+}
+
+.stat-card:hover {
+    border-color: rgba(138, 235, 255, 0.2);
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.3);
+}
+
+.stat-card-label {
+    display: block;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--admin-text-muted);
+}
+
+.stat-card-value {
+    display: block;
+    font-size: 48px;
+    font-weight: 700;
+    color: var(--admin-text);
+    line-height: 1;
+}
+
+.stat-card-icon {
+    position: absolute;
+    top: 18px;
+    right: 20px;
+    width: 52px;
+    height: 52px;
+    opacity: 0.25;
+    pointer-events: none;
+}
+
+.stat-card-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    filter: invert(1);
+}
+
+/* Special variant for "Most Popular" — text instead of a number */
+.stat-card-popular {
+    display: block;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--admin-text);
+    line-height: 1.1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 80%;
+}
+
+.stat-card-popular-meta {
+    font-size: 12px;
+    color: var(--admin-accent-text);
+    font-weight: 600;
+}
+
+
+/* ── Table Card ── */
+
+.ach-table-card {
+    background: var(--admin-surface);
+    border: 1px solid var(--admin-sidebar-border);
+    border-radius: var(--admin-radius);
+    overflow: hidden;
+}
+
+
+/* ── Toolbar ── */
+
+.ach-toolbar {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 20px;
+    border-bottom: 1px solid var(--admin-divider);
+}
+
+.ach-search-wrap {
+    position: relative;
+    width: 320px;
+    margin-right: auto;
+}
+
+.ach-search-wrap .search-icon {
+    position: absolute;
+    right: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 16px;
+    height: 16px;
+    filter: invert(1) brightness(0.7);
+    pointer-events: none;
+}
+
+.ach-search {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid var(--admin-divider);
+    border-radius: 40px;
+    padding: 9px 36px 9px 16px;
+    font-size: 13px;
+    color: var(--admin-text);
+    outline: none;
+    transition: border-color var(--admin-transition), background var(--admin-transition);
+    box-sizing: border-box;
+}
+
+.ach-search::placeholder {
+    color: var(--admin-text-muted);
+}
+
+.ach-search:focus {
+    border-color: rgba(34, 211, 238, 0.35);
+    background: rgba(34, 211, 238, 0.04);
+}
+
+.ach-filter-select {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid var(--admin-divider);
+    border-radius: var(--admin-radius-sm);
+    padding: 9px 32px 9px 14px;
+    font-size: 13px;
+    color: var(--admin-text);
+    outline: none;
+    cursor: pointer;
+    appearance: none;
+    -webkit-appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23859397' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    transition: border-color var(--admin-transition);
+}
+
+.ach-filter-select:focus {
+    border-color: rgba(34, 211, 238, 0.35);
+}
+
+.ach-filter-select option {
+    background: var(--admin-surface);
+    color: var(--admin-text);
+}
+
+
+/* ── Table ── */
+
+.ach-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.ach-table th {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--admin-text-muted);
+    padding: 12px 20px;
+    text-align: left;
+    border-bottom: 1px solid var(--admin-divider);
+    white-space: nowrap;
+}
+
+.ach-table td {
+    padding: 14px 20px;
+    font-size: 13px;
+    color: var(--admin-text);
+    border-bottom: 1px solid var(--admin-sidebar-border);
+    vertical-align: middle;
+}
+
+.ach-table tbody tr {
+    transition: background var(--admin-transition);
+}
+
+.ach-table tbody tr:hover {
+    background: var(--admin-surface-hover);
+}
+
+.ach-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/* Action column centred */
+.ach-table th:last-child,
+.ach-table td:last-child {
+    text-align: center;
+}
+
+
+/* ── Badge Thumbnail Cell (50x50 — as requested) ── */
+
+.ach-badge-cell {
+    width: 50px;
+    height: 50px;
+    border-radius: 12px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(138, 235, 255, 0.15);
+    flex-shrink: 0;
+}
+
+.ach-badge-cell img {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    display: block;
+}
+
+/* Fallback when no image / load failed — shows a glyph */
+.ach-badge-cell.ach-badge--fallback {
+    background: rgba(34, 211, 238, 0.08);
+    border-color: rgba(34, 211, 238, 0.2);
+    position: relative;
+}
+
+.ach-badge-cell.ach-badge--fallback::after {
+    content: '★';
+    font-size: 22px;
+    color: var(--admin-accent-text);
+    line-height: 1;
+}
+
+
+/* ── Cell Typography ── */
+
+.ach-title {
+    font-weight: 600;
+    color: var(--admin-text);
+    font-size: 13px;
+}
+
+.ach-desc {
+    color: var(--admin-text-muted);
+    font-size: 12px;
+    line-height: 1.4;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    max-width: 320px;
+}
+
+.ach-points {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 3px 10px;
+    border-radius: 20px;
+    background: rgba(251, 191, 36, 0.12);
+    color: #fbbf24;
+    border: 1px solid rgba(251, 191, 36, 0.3);
+    font-size: 12px;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.ach-created {
+    font-size: 12px;
+    color: var(--admin-text-muted);
+    white-space: nowrap;
+}
+
+
+/* ── Trigger Badge ── */
+
+.ach-trigger {
+    display: inline-flex;
+    align-items: center;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    padding: 4px 9px;
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid var(--admin-divider);
+    color: var(--admin-text-muted);
+    white-space: nowrap;
+    cursor: help;
+}
+
+/* tinted variants */
+.ach-trigger.trigger-first_login {
+    background: rgba(34, 211, 238, 0.1);
+    border-color: rgba(34, 211, 238, 0.3);
+    color: var(--admin-accent-text);
+}
+
+.ach-trigger.trigger-profile_complete {
+    background: rgba(167, 139, 250, 0.1);
+    border-color: rgba(167, 139, 250, 0.3);
+    color: #c4b5fd;
+}
+
+.ach-trigger.trigger-points_100,
+.ach-trigger.trigger-points_500,
+.ach-trigger.trigger-points_1000 {
+    background: rgba(251, 191, 36, 0.1);
+    border-color: rgba(251, 191, 36, 0.3);
+    color: #fbbf24;
+}
+
+.ach-trigger.trigger-streak_3,
+.ach-trigger.trigger-streak_7,
+.ach-trigger.trigger-streak_30 {
+    background: rgba(253, 89, 30, 0.12);
+    border-color: rgba(253, 89, 30, 0.3);
+    color: #fd9261;
+}
+
+.ach-trigger.trigger-manual {
+    background: rgba(255, 255, 255, 0.04);
+    border-color: var(--admin-divider);
+    color: var(--admin-text-muted);
+}
+
+
+/* ── Unlock Rate Bar ── */
+
+.ach-unlock-wrap {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-width: 140px;
+}
+
+.ach-unlock-bar {
+    flex: 1;
+    height: 8px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid var(--admin-divider);
+    border-radius: 6px;
+    overflow: hidden;
+    min-width: 60px;
+}
+
+.ach-unlock-fill {
+    height: 100%;
+    border-radius: 6px;
+    transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.ach-unlock-fill.high { background: linear-gradient(90deg, rgba(42, 171, 124, 0.6), #3dd19b); }
+.ach-unlock-fill.mid  { background: linear-gradient(90deg, rgba(251, 191, 36, 0.6), #fbbf24); }
+.ach-unlock-fill.low  { background: linear-gradient(90deg, rgba(133, 147, 151, 0.4), #859397); }
+
+.ach-unlock-pct {
+    font-size: 12px;
+    font-weight: 700;
+    min-width: 36px;
+    text-align: right;
+}
+
+.ach-unlock-pct.high { color: #3dd19b; }
+.ach-unlock-pct.mid  { color: #fbbf24; }
+.ach-unlock-pct.low  { color: var(--admin-text-muted); }
+
+
+/* ── Row Action Buttons (mirrors admin_users.css) ── */
+
+.row-actions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+}
+
+.row-action-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 6px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background var(--admin-transition), opacity var(--admin-transition);
+    opacity: 0.55;
+}
+
+.row-action-btn img {
+    width: 16px;
+    height: 16px;
+    display: block;
+    filter: invert(1) brightness(0.7);
+    transition: filter var(--admin-transition);
+}
+
+/* Pencil hover — accent blue */
+.row-action-btn:not(.delete):hover {
+    opacity: 1;
+    background: rgba(34, 211, 238, 0.08);
+}
+
+.row-action-btn:not(.delete):hover img {
+    filter: invert(76%) sepia(60%) saturate(400%) hue-rotate(155deg) brightness(105%);
+}
+
+/* Delete hover — red */
+.row-action-btn.delete:hover {
+    opacity: 1;
+    background: rgba(248, 113, 113, 0.08);
+}
+
+.row-action-btn.delete:hover img {
+    filter: invert(60%) sepia(50%) saturate(600%) hue-rotate(320deg) brightness(110%);
+}
+
+
+/* ── Form Page: Badge Preview ── */
+
+.ach-badge-preview {
+    width: 80px;
+    height: 80px;
+    border-radius: 16px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(34, 211, 238, 0.06);
+    border: 1px solid rgba(34, 211, 238, 0.2);
+    box-shadow: 0 0 16px rgba(34, 211, 238, 0.1);
+    flex-shrink: 0;
+}
+
+.ach-badge-preview img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    display: block;
+}
+
+/* Placeholder icon — sized down and tinted */
+.ach-badge-preview img.placeholder {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+    opacity: 0.5;
+    filter: invert(76%) sepia(60%) saturate(400%) hue-rotate(155deg) brightness(105%);
+}
+
+
+/* ── Responsive ── */
+
+@media (max-width: 1200px) {
+    .ach-stats-row {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .ach-desc {
+        max-width: 220px;
+    }
+}
+
+@media (max-width: 900px) {
+    .ach-table th:nth-child(3),
+    .ach-table td:nth-child(3),
+    .ach-table th:nth-child(7),
+    .ach-table td:nth-child(7) {
+        display: none; /* hide Description + Created columns on small screens */
+    }
+}
+
+@media (max-width: 600px) {
+    .ach-stats-row {
+        grid-template-columns: 1fr;
+    }
+}

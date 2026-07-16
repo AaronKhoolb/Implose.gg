@@ -1,0 +1,219 @@
+/*
+Program Name: /assets/css/pages/user_room_lobby.css
+Description : Styles for the quiz room lobby (code, timer, players,
+              start button).
+First Written on: Tuesday, 30-Jun-2026
+*/
+
+.lobby-wrapper {
+    width: 80%;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 4% 0 6% 0;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.lobby-wrapper .btn-back {
+    align-self: flex-start;
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.lobby-wrapper .btn-back:hover {
+    color: #fff;
+}
+
+.lobby-header {
+    text-align: center;
+    margin-top: 6px;
+}
+
+.lobby-eyebrow {
+    display: inline-block;
+    font-family: var(--font-heading);
+    font-size: 14px;
+    letter-spacing: 2px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    margin-bottom: 8px;
+}
+
+.lobby-quiz-title {
+    font-size: clamp(36px, 3vw, 60px);
+    line-height: 1.1;
+    margin: 0;
+}
+
+.lobby-course-label {
+    color: var(--text-muted);
+    margin-top: 8px;
+    font-size: 16px;
+}
+
+/* Code card */
+.lobby-code-card {
+    padding: 4% 5%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    text-align: center;
+}
+
+.lobby-code-label {
+    font-family: var(--font-heading);
+    font-size: 14px;
+    letter-spacing: 2px;
+    color: var(--text-muted);
+}
+
+.lobby-code-value {
+    font-family: var(--font-heading);
+    font-size: clamp(48px, 6vw, 96px);
+    letter-spacing: 10px;
+    color: #ffd447;
+    text-shadow: 0 0 16px rgba(255, 212, 71, 0.35);
+    line-height: 1;
+    margin: 6px 0;
+    user-select: all;
+}
+
+.lobby-copy-btn {
+    margin-top: 6px;
+}
+
+.lobby-code-hint {
+    color: var(--text-muted);
+    font-size: 13px;
+    margin: 6px 0 0 0;
+}
+
+/* Countdown timer card */
+.lobby-timer-card {
+    padding: 3% 4%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    text-align: center;
+}
+
+.lobby-timer-label {
+    font-family: var(--font-heading);
+    font-size: 14px;
+    letter-spacing: 1.5px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+}
+
+.lobby-timer-value {
+    font-size: clamp(48px, 5.5vw, 84px);
+    line-height: 1;
+    color: #fff;
+    transition: color 0.15s ease;
+}
+
+.lobby-timer-value.is-warning {
+    color: var(--btn-red);
+    animation: lobby-pulse 1s ease-in-out infinite;
+}
+
+@keyframes lobby-pulse {
+    0%, 100% { transform: scale(1); }
+    50%      { transform: scale(1.08); }
+}
+
+.lobby-timer-sub {
+    font-family: var(--font-input);
+    font-size: 14px;
+    color: var(--text-muted);
+}
+
+/* Action row */
+.lobby-action-row {
+    display: flex;
+    justify-content: center;
+    margin-top: 4px;
+}
+
+.lobby-start-btn {
+    min-width: 240px;
+    padding: 14px 28px;
+    font-size: clamp(16px, 1.2vw, 20px);
+}
+
+.lobby-waiting-text {
+    color: var(--text-muted);
+    font-style: italic;
+    font-size: 16px;
+}
+
+/* Participants */
+.lobby-participants {
+    padding: 3% 4%;
+}
+
+.lobby-participants h3 {
+    font-size: clamp(20px, 1.5vw, 26px);
+    margin: 0 0 12px 0;
+}
+
+.lobby-count {
+    color: var(--text-muted);
+    font-size: 0.7em;
+    font-family: var(--font-input);
+    margin-left: 6px;
+}
+
+.lobby-participant-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 10px;
+}
+
+.lobby-participant-list li {
+    padding: 10px 14px;
+    background-color: var(--panel-bg-light);
+    border: 3px solid var(--panel-border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    font-size: 15px;
+}
+
+.lobby-participant-list li.is-host {
+    border-color: #ffd447;
+}
+
+.lobby-host-tag {
+    font-family: var(--font-heading);
+    font-size: 10px;
+    letter-spacing: 1px;
+    color: #ffd447;
+    background: rgba(255, 212, 71, 0.12);
+    border: 2px solid #ffd447;
+    padding: 2px 6px;
+}
+
+.lobby-empty {
+    grid-column: 1 / -1;
+    text-align: center;
+    color: var(--text-muted);
+    font-style: italic;
+}
+
+@media (max-width: 700px) {
+    .lobby-wrapper {
+        width: 92%;
+    }
+    .lobby-start-btn {
+        width: 100%;
+    }
+}

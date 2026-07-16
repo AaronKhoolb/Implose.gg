@@ -1,0 +1,580 @@
+/*
+Programmer Name: Chong Jun Yoong
+Program Name: /assets/css/pages/admin_export_report.css
+Description: Admin export report page styling
+First Written on: Sunday, 22-Jun-2026
+Edited on: Sunday, 22-Jun-2026
+*/
+
+
+/* page header */
+
+.export-page-header {
+    margin-bottom: 28px;
+}
+
+.export-page-header h1 {
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--admin-text);
+    margin: 0 0 6px;
+    letter-spacing: -0.01em;
+}
+
+.export-page-header p {
+    font-size: 14px;
+    color: var(--admin-text-muted);
+    margin: 0;
+}
+
+
+/* filter bar */
+
+.export-filter-bar {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 28px;
+}
+
+.export-filter-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 18px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--admin-text);
+    background: var(--admin-surface);
+    border: 1px solid var(--admin-sidebar-border);
+    border-radius: var(--admin-radius-sm);
+    cursor: pointer;
+    transition: all var(--admin-transition);
+    appearance: none;
+    -webkit-appearance: none;
+    text-decoration: none;
+}
+
+.export-filter-btn:hover {
+    border-color: rgba(138, 235, 255, 0.25);
+    background: rgba(255, 255, 255, 0.04);
+}
+
+.export-filter-btn img {
+    width: 15px;
+    height: 15px;
+    filter: invert(1) brightness(0.7);
+}
+
+/* select variant */
+.export-filter-select {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 32px 10px 18px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--admin-text);
+    background: var(--admin-surface);
+    border: 1px solid var(--admin-sidebar-border);
+    border-radius: var(--admin-radius-sm);
+    cursor: pointer;
+    transition: all var(--admin-transition);
+    appearance: none;
+    -webkit-appearance: none;
+    outline: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23859397' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+}
+
+.export-filter-select:hover {
+    border-color: rgba(138, 235, 255, 0.25);
+    background-color: rgba(255, 255, 255, 0.04);
+}
+
+.export-filter-select:focus {
+    border-color: rgba(34, 211, 238, 0.35);
+}
+
+.export-filter-select option {
+    background: var(--admin-surface);
+    color: var(--admin-text);
+}
+
+
+/* custom date picker */
+
+.export-date-picker-wrap {
+    gap: 6px;
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+}
+
+.custom-calendar-icon {
+    width: 15px !important;
+    height: 15px !important;
+    filter: invert(1) brightness(0.9) !important;
+}
+
+.custom-date-input {
+    background: transparent;
+    border: none;
+    color: var(--admin-text);
+    font-size: 13px;
+    font-weight: 600;
+    width: 82px; /* just enough for MM/DD/YYYY without the native icon */
+    cursor: pointer;
+    outline: none;
+    font-family: inherit;
+    position: relative;
+}
+
+/* hide native calendar icon but keep it clickable over the text */
+.custom-date-input::-webkit-calendar-picker-indicator {
+    background: transparent;
+    bottom: 0;
+    color: transparent;
+    cursor: pointer;
+    height: auto;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: auto;
+    opacity: 0;
+}
+
+/* 2-col layout */
+
+.export-main-layout {
+    display: grid;
+    grid-template-columns: 1fr 340px;
+    gap: 24px;
+    align-items: start;
+}
+
+
+/* report document card */
+
+.export-document {
+    background: var(--admin-surface);
+    border: 1px solid var(--admin-sidebar-border);
+    border-radius: 16px;
+    padding: 36px 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+
+/* document title */
+.export-doc-title {
+    text-align: center;
+    padding-bottom: 24px;
+    border-bottom: 1px solid var(--admin-divider);
+}
+
+.export-doc-title h2 {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--admin-text);
+    margin: 0 0 6px;
+}
+
+.export-doc-title span {
+    font-size: 13px;
+    color: var(--admin-accent-text);
+    font-weight: 600;
+}
+
+
+/* section heading */
+
+.export-section-heading {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--admin-text);
+    margin-bottom: 18px;
+}
+
+.export-section-heading .section-num {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 26px;
+    height: 26px;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--admin-bg);
+    background: var(--admin-accent);
+    border-radius: 6px;
+    flex-shrink: 0;
+}
+
+
+/* report overview cards */
+
+.export-overview-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: clamp(6px, 2vw, 16px);
+}
+
+.export-overview-card {
+    background: var(--admin-surface);
+    border: 1px solid var(--admin-sidebar-border);
+    border-radius: var(--admin-radius);
+    padding: clamp(10px, 10cqw, 16px) clamp(8px, 8cqw, 14px) clamp(12px, 12cqw, 18px);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    gap: clamp(4px, 5cqw, 8px);
+    transition: border-color var(--admin-transition), box-shadow var(--admin-transition);
+    container-type: inline-size;
+}
+
+.export-overview-card:hover {
+    border-color: rgba(138, 235, 255, 0.2);
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.3);
+}
+
+.export-overview-card .overview-label {
+    display: block;
+    font-size: clamp(8px, 7cqw, 10px);
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--admin-text-muted);
+    z-index: 2;
+    line-height: 1.2;
+    min-height: 2.4em;
+    padding-right: clamp(20px, 22cqw, 40px);
+}
+
+.export-overview-card .overview-value {
+    display: block;
+    font-size: clamp(20px, 24cqw, 36px);
+    font-weight: 700;
+    color: var(--admin-text);
+    line-height: 1;
+    z-index: 2;
+}
+
+.export-overview-card .overview-icon {
+    position: absolute;
+    top: clamp(8px, 10cqw, 14px);
+    right: clamp(8px, 10cqw, 14px);
+    width: clamp(20px, 24cqw, 36px);
+    height: clamp(20px, 24cqw, 36px);
+    opacity: 0.15;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.export-overview-card .overview-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    filter: invert(1);
+}
+
+
+/* data tables (source / recent log) */
+
+.export-data-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.export-data-table thead th {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--admin-text-muted);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    text-align: left;
+    padding: 0 0 12px;
+    border-bottom: 1px solid var(--admin-divider);
+}
+
+.export-data-table tbody td {
+    font-size: 14px;
+    color: var(--admin-text);
+    padding: 14px 0;
+    border-bottom: 1px solid rgba(60, 73, 76, 0.2);
+    vertical-align: middle;
+}
+
+.export-data-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.export-data-table .col-source {
+    width: 40%;
+    font-weight: 600;
+}
+
+.export-data-table .col-total {
+    width: 20%;
+    text-align: center;
+}
+
+.export-data-table .col-percentage {
+    width: 40%;
+}
+
+/* percentage cell with bar */
+.percentage-cell {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.percentage-text {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--admin-text-muted);
+    min-width: 52px;
+}
+
+.percentage-bar-track {
+    flex: 1;
+    height: 6px;
+    background: rgba(255, 255, 255, 0.06);
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.percentage-bar-fill {
+    height: 100%;
+    border-radius: 3px;
+    transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.bar-cyan { background: var(--admin-accent); box-shadow: 0 0 8px rgba(34, 211, 238, 0.3); }
+
+
+/* sidebar */
+
+.export-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    position: sticky;
+    top: 20px;
+}
+
+/* summary card */
+.export-summary-card {
+    background: var(--admin-surface);
+    border: 1px solid var(--admin-sidebar-border);
+    border-radius: 16px;
+    padding: 28px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.export-summary-card h3 {
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--admin-text);
+    margin: 0;
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--admin-divider);
+}
+
+.summary-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.summary-row .summary-label {
+    font-size: 13px;
+    color: var(--admin-text-muted);
+    font-weight: 500;
+}
+
+.summary-row .summary-value {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--admin-text);
+}
+
+/* export PDF btn */
+.btn-export-pdf {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    padding: 14px 20px;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--admin-bg);
+    background: var(--admin-accent);
+    border: none;
+    border-radius: var(--admin-radius);
+    cursor: pointer;
+    transition: all var(--admin-transition);
+    text-decoration: none;
+}
+
+.btn-export-pdf:hover {
+    background: #38e4ff;
+    box-shadow: 0 0 20px rgba(34, 211, 238, 0.35);
+    transform: translateY(-1px);
+}
+
+.btn-export-pdf:active {
+    transform: translateY(0);
+}
+
+.btn-export-pdf img {
+    width: 18px;
+    height: 18px;
+}
+
+
+/* weekly trend chart card */
+
+.export-trend-card {
+    background: var(--admin-surface);
+    border: 1px solid var(--admin-sidebar-border);
+    border-radius: 16px;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.export-trend-card h3 {
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--admin-text);
+    margin: 0;
+}
+
+.trend-chart-placeholder {
+    width: 100%;
+    height: 180px;
+    position: relative;
+    overflow: hidden;
+}
+
+/* breadcrumb */
+
+.export-breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 13px;
+    color: var(--admin-text-muted);
+    margin-bottom: 6px;
+}
+
+.export-breadcrumb a {
+    color: var(--admin-text-muted);
+    text-decoration: none;
+    transition: color var(--admin-transition);
+}
+
+.export-breadcrumb a:hover {
+    color: var(--admin-accent-text);
+}
+
+.export-breadcrumb .sep {
+    opacity: 0.4;
+}
+
+.export-breadcrumb .current {
+    color: var(--admin-text);
+    font-weight: 600;
+}
+
+/* responsive */
+@media (max-width: 1024px) {
+    .export-main-layout {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+/* extra helpers used inside export_report.php */
+
+.date-sep {
+    color: var(--admin-text-muted);
+}
+
+/* "Apply" btn in the filter bar */
+.export-filter-btn.apply-btn {
+    background: var(--admin-accent);
+    color: var(--admin-bg);
+    border-color: var(--admin-accent);
+}
+.export-filter-btn.apply-btn img {
+    filter: none;
+}
+
+
+/* recent-report-log col widths */
+.col-date-25   { width: 25%; }
+.col-source-25 { width: 25%; }
+.col-reason-50 { width: 50%; }
+
+
+.recent-log-date {
+    font-size: 13px;
+    color: var(--admin-text-muted);
+}
+
+.recent-log-reason {
+    font-size: 13px;
+    color: var(--admin-text-muted);
+    font-style: italic;
+    background: rgba(0, 0, 0, 0.2);
+    padding: 8px 12px;
+    border-radius: 6px;
+}
+
+.recent-log-empty {
+    text-align: center;
+    padding: 24px;
+    color: var(--admin-text-muted);
+}
+
+
+/* export PDF btn - a-tag override */
+.btn-export-pdf {
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+}
+.btn-export-pdf .icon-flip {
+    transform: rotate(180deg);
+}
+
+
+.trend-chart-placeholder {
+    position: relative;
+    height: 160px;
+    width: 100%;
+}
+
+.trend-empty {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    color: var(--admin-text-muted);
+    font-size: 13px;
+}
+

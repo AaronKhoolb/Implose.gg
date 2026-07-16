@@ -1,0 +1,407 @@
+/* courses grid */
+.topnav-main-content section {
+    padding: 0 40px;
+    box-sizing: border-box;
+}
+
+.courses-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 25px;
+    margin-top: 30px;
+    padding-bottom: 40px;
+}
+
+.course-card {
+    background-color: #15161b;
+    border: 2px solid #2d2f39;
+    border-radius: 8px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.2s ease, border-color 0.2s ease;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+.course-card:hover {
+    transform: translateY(-5px);
+    border-color: #ffd700;
+}
+
+.course-thumbnail {
+    height: 150px;
+    background-size: cover;
+    background-position: center;
+    background-color: #20222a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 2px solid #2d2f39;
+}
+
+.placeholder-icon {
+    font-size: 2.5rem;
+}
+
+.course-info {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.course-card-title {
+    color: #ffffff;
+    margin: 0 0 10px 0;
+    font-size: 1.2rem;
+}
+
+.course-card-desc {
+    color: #9aa0a6;
+    font-size: 0.9rem;
+    line-height: 1.4;
+    margin-bottom: 20px;
+    flex-grow: 1;
+    /* clamp to 3 lines */
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.btn-select {
+    background-color: #ffd700;
+    color: #000000;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 4px;
+    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+    font-weight: 700;
+    font-size: 0.85rem;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    cursor: pointer;
+    align-self: start;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.course-card:hover .btn-select {
+    background-color: #ffffff;
+}
+
+.btn-select:active {
+    transform: scale(0.96);
+}
+
+.no-courses {
+    color: #9aa0a6;
+    font-size: 1rem;
+}
+
+
+/* back button */
+.btn-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: #ffd700;
+    text-decoration: none;
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    font-weight: 600;
+    font-size: 0.95rem;
+    letter-spacing: 0.5px;
+    margin-bottom: 25px;
+    transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.btn-back:hover {
+    color: #ffffff;
+    transform: translateX(-4px);
+}
+
+/* quiz level list */
+.quizzes-list-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 10px;
+    padding-bottom: 40px;
+}
+
+.quiz-level-row {
+    background-color: #15161b;
+    border: 2px solid #2d2f39;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    padding: 15px 25px;
+    cursor: pointer;
+    transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.quiz-level-row:hover {
+    transform: translateX(5px);
+    border-color: #ffd700;
+}
+
+.quiz-level-badge {
+    background-color: #20222a;
+    border: 2px solid #3a3d4a;
+    border-radius: 6px;
+    padding: 8px;
+    min-width: 50px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    margin-right: 25px;
+}
+
+.quiz-level-badge .lbl-lv {
+    color: #ffd700;
+    font-size: 0.7rem;
+    font-weight: bold;
+}
+
+.quiz-level-badge .num-lv {
+    color: #ffffff;
+    font-size: 1.4rem;
+    font-weight: bold;
+}
+
+.quiz-level-details {
+    flex-grow: 1;
+    text-align: left;
+    padding-right: 20px;
+}
+
+.quiz-level-title {
+    color: #ffffff;
+    margin: 0 0 5px 0;
+    font-size: 1.15rem;
+}
+
+.quiz-level-desc {
+    color: #9aa0a6;
+    margin: 0;
+    font-size: 0.9rem;
+    line-height: 1.4;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+.btn-start-quiz {
+    background-color: #ffd700;
+    color: #000000;
+    border: none;
+    padding: 10px 24px;
+    border-radius: 4px;
+    font-family: 'Segoe UI', sans-serif;
+    font-weight: 700;
+    font-size: 0.85rem;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.quiz-level-row:hover .btn-start-quiz {
+    background-color: #ffffff;
+}
+
+
+/* quiz game area */
+.quiz-game-wrapper {
+    padding: 0 40px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 70vh;
+}
+
+.game-panel-center {
+    background-color: #15161b;
+    border: 2px solid #2d2f39;
+    border-radius: 12px;
+    width: 100%;
+    max-width: 800px;
+    padding: 40px;
+    text-align: center;
+    box-sizing: border-box;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+/* lobby countdown */
+.lobby-title {
+    color: #9aa0a6;
+    font-size: 1.1rem;
+    letter-spacing: 2px;
+    font-weight: bold;
+}
+
+.pixel-giant-timer {
+    font-size: 6rem;
+    color: #ffd700;
+    margin: 20px 0;
+    font-weight: bold;
+    text-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+}
+
+.lobby-subtext {
+    color: #9aa0a6;
+    font-family: 'Segoe UI', sans-serif;
+    font-size: 0.95rem;
+}
+
+/* top status bar */
+.quiz-status-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+#question-progress-label {
+    color: #ffd700;
+    font-weight: bold;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+}
+
+.timer-badge {
+    background-color: #20222a;
+    border: 2px solid #3a3d4a;
+    color: #ffffff;
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-weight: bold;
+    font-family: 'Segoe UI', sans-serif;
+    transition: all 0.3s ease;
+}
+
+.timer-badge.timer-warning {
+    border-color: #ff4a4a;
+    color: #ff4a4a;
+    box-shadow: 0 0 10px rgba(255, 74, 74, 0.3);
+}
+
+/* progress bar */
+.progress-track-bar {
+    background-color: #20222a;
+    height: 6px;
+    border-radius: 3px;
+    overflow: hidden;
+    margin-bottom: 35px;
+}
+
+.progress-fill-inner {
+    background-color: #ffd700;
+    height: 100%;
+    width: 0%;
+    transition: width 0.4s ease;
+}
+
+.question-container-box {
+    text-align: left;
+    margin-bottom: 35px;
+}
+
+#display-question-text {
+    color: #ffffff;
+    font-size: 1.5rem;
+    line-height: 1.4;
+    margin: 0;
+}
+
+/* answer choices */
+.answers-layout {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 35px;
+}
+
+.choice-box-wrapper {
+    width: 100%;
+}
+
+.choice-box-inner {
+    display: flex;
+    align-items: center;
+    background-color: #20222a;
+    border: 2px solid #2d2f39;
+    border-radius: 8px;
+    padding: 16px 20px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.choice-box-inner:hover {
+    border-color: #9aa0a6;
+    background-color: #252730;
+}
+
+.choice-box-inner input[type="radio"] {
+    margin-right: 15px;
+    accent-color: #ffd700;
+    transform: scale(1.2);
+    cursor: pointer;
+}
+
+.choice-prefix {
+    color: #ffd700;
+    font-weight: bold;
+    margin-right: 15px;
+    font-size: 1rem;
+}
+
+.choice-string {
+    color: #e3e5e8;
+    font-family: 'Segoe UI', sans-serif;
+    font-size: 1.05rem;
+}
+
+/* fill-in-the-blank input */
+.text-input-wrapper {
+    width: 100%;
+}
+
+.game-text-input {
+    width: 100%;
+    background-color: #20222a;
+    border: 2px solid #2d2f39;
+    border-radius: 8px;
+    padding: 16px 20px;
+    color: #ffffff;
+    font-family: 'Segoe UI', sans-serif;
+    font-size: 1.1rem;
+    box-sizing: border-box;
+    outline: none;
+    transition: border-color 0.2s ease;
+}
+
+.game-text-input:focus {
+    border-color: #ffd700;
+}
+
+/* footer button */
+.quiz-action-footer {
+    text-align: right;
+}
+
+#btn-next-step {
+    background-color: #ffd700;
+    color: #000000;
+    border: none;
+    padding: 14px 30px;
+    border-radius: 6px;
+    font-family: 'Segoe UI', sans-serif;
+    font-weight: bold;
+    font-size: 0.95rem;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+#btn-next-step:hover {
+    background-color: #ffffff;
+}

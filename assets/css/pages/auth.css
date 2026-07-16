@@ -1,0 +1,249 @@
+/*
+Programmer Name: Mr. Khoo Lay Bin
+Program Name: /assets/css/pages/auth.css
+Description: auth page css
+First Written on: Sunday, 18-May-2026
+Edited on: Wednesday, 27-May-2026
+*/
+
+.sign_in-bg {
+    position: relative;
+    z-index: 1;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(4px);
+    
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.sign_in-container {
+    width: 50%;
+    height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.sign_in-ui {
+    width: 570px;
+    height: 520px;
+    padding: 30px 28px 0px 28px;
+    margin-bottom: 25px;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.sign_up-ui {
+    width: 570px;
+    height: 530px;
+    padding: 30px 28px 0px 28px;
+    margin-bottom: 25px;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.verify-otp-ui {
+    width: 570px;
+    height: 420px;
+    padding: 45px 28px 0px 28px;
+    margin-bottom: 25px;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.forgot_password-ui {
+    width: 570px;
+    height: 390px;
+    padding: 45px 28px 0px 28px;
+    margin-bottom: 25px;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.reset_password-ui {
+    width: 570px;
+    height: 480px;
+    padding: 45px 28px 0px 28px;
+    margin-bottom: 25px;
+
+    display: flex;
+    flex-direction: column;
+}
+
+
+.sign_in-ui-header {
+    margin-bottom: 30px;
+    display: flex;
+    flex-direction: column;
+}
+
+.sign_in-ui-header .title {
+    font-size: 45px;
+    font-weight: var(--extra-bold);
+    margin-bottom: 10px;
+}
+
+.sign_in-ui-header .verify-otp-title {
+    font-size: 35px;
+    font-weight: var(--extra-bold);
+    margin-bottom: 10px;
+}
+
+.sign_in-ui-header .subtitle {
+    font-size: 16px;
+    color: var(--text-muted);
+}
+
+.sign_in-ui-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.sign_in-ui-form .form-field {
+    display: flex;
+    flex-direction: column;
+}
+
+.sign_in-ui-form .form-field label {
+    margin-left: 5px;
+    margin-bottom: 8px;
+    font-size: 16px;
+    font-weight: var(--bold);
+}
+
+.sign_in-ui-form .form-field:first-child {
+    margin-bottom: 15px;
+}
+
+.sign_in-ui-form .form-field:nth-of-type(2) {
+    margin-bottom: 10px;
+}
+
+.sign_in-ui-form .form-field:nth-of-type(3) {
+    margin-top: 5px;
+}
+
+.sign_in-btn {
+    width: 100%;
+    padding: 14px 20px;
+    font-size: 16px;
+    letter-spacing: 1px;
+    margin-top: 10px;
+}
+
+.sign_in-ui-footer {
+    display: flex;
+    justify-content: space-between;
+    width: 570px;
+    gap: 25px;
+}
+
+.signup {
+    padding: 13px 0px;
+    width: 50%;
+    font-size: 16px;
+}
+
+.forgot-password {
+    padding: 13px 0px;
+    width: 50%;
+    font-size: 16px;
+}
+
+.signin-btn {
+    padding: 13px 0px;
+    width: 570px;
+    font-size: 16px;
+}
+
+.otp-container {
+    margin-bottom: 20px;
+}
+
+.otp-container label {
+    margin-bottom: 12px !important;
+}
+
+.otp-container .txt-container {
+    padding: 3px;
+}
+
+.otp-container input {
+    letter-spacing: 15px;
+    text-align: center;
+    font-size: 28px;
+    font-weight: var(--bold);
+}
+
+.otp-container input::-webkit-inner-spin-button,
+.otp-container input::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.otp-container ::placeholder {
+    letter-spacing: 0px;
+    font-size: 20px;
+}
+
+.message {
+    margin-top: 10px;
+}
+
+.cf-turnstile-wrapper {
+    width: 100%;
+    margin-top: 10px;
+}
+
+.cf-turnstile-wrapper .cf-turnstile {
+    width: 99%;
+    margin: auto;
+}
+
+.resend-otp-ui {
+    width: 570px;
+    gap: 20px;
+    padding: 13px 20px 13px 18px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.resend-otp-ui .timer {
+    gap: 10px;
+    display: flex;
+    align-items: center;
+    color: var(--text-muted);
+    font-size: 14px;
+}
+
+.resend-otp-ui .resend-btn {
+    text-decoration: none;
+    color: var(--text-light);
+    width: 150px;
+    text-align: center;
+    font-size: 20px;
+}
+
+.resend-otp-ui .resend-btn:hover {
+    text-shadow:
+        0 4px 0 #2f5a2a;
+}
+
+.resend-otp-ui .resend-btn.disabled {
+    color: var(--text-muted);
+    cursor: url("/Implose.gg-src/assets/images/icons/ban.svg") 10 10, not-allowed;
+}
+
+.resend-otp-ui .resend-btn.disabled:hover {
+    text-shadow: none;
+}

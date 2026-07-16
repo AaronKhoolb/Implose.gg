@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 128">
+    <defs>
+        <linearGradient id="folder-back" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#7FB8E8"/>
+            <stop offset="100%" stop-color="#3D8FD8"/>
+        </linearGradient>
+        <linearGradient id="folder-front" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#9FCDF0"/>
+            <stop offset="100%" stop-color="#4A9EE0"/>
+        </linearGradient>
+    </defs>
+    <path d="M8 24 Q8 16 16 16 L60 16 L72 28 L144 28 Q152 28 152 36 L152 112 Q152 120 144 120 L16 120 Q8 120 8 112 Z" fill="url(#folder-back)"/>
+    <path d="M8 44 Q8 36 16 36 L144 36 Q152 36 152 44 L152 112 Q152 120 144 120 L16 120 Q8 120 8 112 Z" fill="url(#folder-front)"/>
+</svg>

@@ -1,0 +1,265 @@
+<?php
+/*
+Programmer Name: Mr. Khoo Lay Bin
+Program Name: /actions/admin/export_logs_pdf.php
+Description: system logs backend - export system logs to pdf
+First Written on: Tuesday, 30-Jun-2026
+Edited on: Saturday, 04-Jul-2026
+*/
+
+// stop db.php's <script> echo from getting into the pdf
+ob_start();
+
+include($_SERVER['DOCUMENT_ROOT'] . '/Implose.gg-src/includes/db.php');
+include($_SERVER['DOCUMENT_ROOT'] . '/Implose.gg-src/includes/auth_check.php');
+include($_SERVER['DOCUMENT_ROOT'] . '/Implose.gg-src/includes/system_log.php');
+require($_SERVER['DOCUMENT_ROOT'] . '/Implose.gg-src/vendor/autoload.php');
+
+ob_end_clean();
+
+use Dompdf\Dompdf;
+
+
+// get search filter
+if (isset($_GET['search'])) {
+    $search = trim($_GET['search']);
+} else {
+    $search = '';
+}
+
+// get action filter
+if (isset($_GET['action'])) {
+    $action = $_GET['action'];
+} else {
+    $action = '';
+}
+
+// get date filters
+if (isset($_GET['from'])) {
+    $from = $_GET['from'];
+} else {
+    $from = '';
+}
+
+if (isset($_GET['to'])) {
+    $to = $_GET['to'];
+} else {
+    $to = '';
+}
+
+// build where clause
+$where = "WHERE 1=1";
+
+if ($search != '') {
+    $where = $where . " AND (description LIKE '%$search%' OR action_type LIKE '%$search%')";
+}
+if ($action != '') {
+    $where = $where . " AND action_type = '$action'";
+}
+if ($from != '') {
+    $where = $where . " AND created_at >= '$from 00:00:00'";
+}
+if ($to != '') {
+    $where = $where . " AND created_at <= '$to 23:59:59'";
+}
+
+// get the logs
+$list_sql = "SELECT log_id, user_id, action_type, description, created_at FROM SYSTEM_LOG_T $where ORDER BY created_at DESC";
+
+$list_result = mysqli_query($conn, $list_sql);
+$total = mysqli_num_rows($list_result);
+
+
+// Export by
+$admin_id = $_SESSION['user_id'];
+$admin_sql = "SELECT username FROM USER_T WHERE user_id = '$admin_id'";
+$admin_result = mysqli_query($conn, $admin_sql);
+$admin_row = mysqli_fetch_assoc($admin_result);
+$admin_name = $admin_row['username'];
+
+
+// build header labels
+if ($from != '' && $to != '') {
+    $period = $from . ' - ' . $to;
+} else if ($from != '') {
+    $period = 'From ' . $from;
+} else if ($to != '') {
+    $period = 'Up to ' . $to;
+} else {
+    $period = 'All Time';
+}
+
+if ($search != '') {
+    $filter_by = htmlspecialchars($search);
+} else {
+    $filter_by = 'All Users';
+}
+
+if ($action != '') {
+    $action_display = $action;
+} else {
+    $action_display = 'All Actions';
+}
+
+$generated_date = date('j-M-Y');
+
+
+// build the rows html
+$rows_html = '';
+$row_number = 1;
+
+while ($row = mysqli_fetch_assoc($list_result)) {
+    if ($row['user_id'] != '') {
+        $user_id_display = $row['user_id'];
+    } else {
+        $user_id_display = '-';
+    }
+
+    $log_number = 'L' . str_pad($row_number, 4, '0', STR_PAD_LEFT);
+    $date       = $row['created_at'];
+
+    $rows_html = $rows_html . '<tr>';
+    $rows_html = $rows_html . '<td class="c">' . $log_number . '</td>';
+    $rows_html = $rows_html . '<td class="c">' . $date . '</td>';
+    $rows_html = $rows_html . '<td class="c">' . $user_id_display . '</td>';
+    $rows_html = $rows_html . '<td class="c">' . $row['action_type'] . '</td>';
+    $rows_html = $rows_html . '<td>' . $row['description'] . '</td>';
+    $rows_html = $rows_html . '</tr>';
+
+    $row_number = $row_number + 1;
+}
+
+
+// build the full pdf html
+$html = '
+<html>
+<head>
+<style>
+    body { font-family: Helvetica, Arial, sans-serif; color: #000; font-size: 11px; }
+
+    .title    { text-align: center; font-size: 16px; font-weight: bold; margin-bottom: 4px; }
+    .subtitle { text-align: center; font-size: 14px; font-weight: bold; }
+    .tagline  { text-align: center; font-size: 12px; margin-bottom: 20px; }
+
+    .info-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 20px;
+    }
+    .info-table td {
+        border: 1px solid #333;
+        padding: 8px 12px;
+        font-size: 11px;
+    }
+    .info-label {
+        font-weight: bold;
+        width: 15%;
+    }
+    .info-value {
+        width: 35%;
+    }
+
+    .log-table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+    .log-table th {
+        background: #dbe5f1;
+        border: 1px solid #333;
+        padding: 8px;
+        text-align: center;
+        font-weight: bold;
+        font-size: 11px;
+    }
+    .log-table td {
+        border: 1px solid #333;
+        padding: 8px;
+        font-size: 10px;
+        vertical-align: middle;
+    }
+    .log-table td.c {
+        text-align: center;
+    }
+
+    .total-row td {
+        background: #dbe5f1;
+        font-weight: bold;
+        text-align: center;
+    }
+</style>
+</head>
+<body>
+
+<div class="title">System Logs Report for the period - ' . $period . '</div>
+<div class="subtitle">Implose.gg</div>
+<div class="tagline">Gamified E-Learning Platform</div>
+
+<table class="info-table">
+    <tr>
+        <td class="info-label">Generated By</td>
+        <td class="info-value">' . $admin_name . '</td>
+        <td class="info-label">Generated Date</td>
+        <td class="info-value">' . $generated_date . '</td>
+    </tr>
+    <tr>
+        <td class="info-label">Filter By</td>
+        <td class="info-value">' . $filter_by . '</td>
+        <td class="info-label">Action Type</td>
+        <td class="info-value">' . $action_display . '</td>
+    </tr>
+</table>
+
+<table class="log-table">
+    <thead>
+        <tr>
+            <th width="10%">SL-No</th>
+            <th width="18%">Log Date / Time</th>
+            <th width="10%">User ID</th>
+            <th width="22%">Action Type</th>
+            <th width="40%">Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        ' . $rows_html . '
+        <tr class="total-row">
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>Total Records</td>
+            <td>' . $total . '</td>
+        </tr>
+    </tbody>
+</table>
+
+</body>
+</html>';
+
+
+// generate the pdf
+$dompdf = new Dompdf();
+$dompdf->loadHtml($html);
+$dompdf->setPaper('A4', 'landscape');
+$dompdf->render();
+
+$pdf_data = $dompdf->output();
+
+
+// save the pdf on server first
+$save_folder = $_SERVER['DOCUMENT_ROOT'] . '/Implose.gg-src/uploads/logs';
+
+$filename  = 'logs_' . date('Ymd_His') . '.pdf';
+$save_path = $save_folder . '/' . $filename;
+
+file_put_contents($save_path, $pdf_data);
+
+
+// record this export in system log
+add_system_log($conn, $admin_id, 'Admin Export Logs', "Admin exported $total logs to PDF ($filename).");
+
+
+// send the saved file to download
+header('Content-Type: application/pdf');
+header('Content-Disposition: attachment; filename="' . $filename . '"');
+
+readfile($save_path);
+?>

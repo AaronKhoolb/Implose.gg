@@ -1,0 +1,114 @@
+/*
+Programmer Name: Mr. Khoo Lay Bin
+Program Name: /assets/css/global/user/input.css
+Description: shared input, txt area styling
+First Written on: Wednesday, 19-May-2026
+Edited on: Wednesday, 27-May-2026
+*/
+
+.txt-container {
+    background-color: var(--txt-bg);
+    width: 100%;
+    box-shadow: var(--pixel-inner-shadow);
+    border: var(--pixel-border);
+    padding: 5px 10px;
+    box-sizing: border-box;
+    cursor: url("/Implose.gg-src/assets/images/icons/text-cursor.svg") 2 2, text;
+
+    display: flex;
+    align-items: center;
+}
+
+
+.txt-container:focus-within {
+    border-color: var(--txt-focus);
+    box-shadow:
+        0 0 0 3px rgba(243,181,31,0.35),
+        var(--pixel-inner-shadow)
+}
+
+.txt-container input,
+.txt-container textarea {
+    font-family: var(--font-input);
+    font-weight: var(--semi-bold);
+    letter-spacing: 0.5px;
+    width: 100%;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    line-height: 1.5;
+}
+
+
+.txt-container input::placeholder,
+.txt-container textarea::placeholder {
+    font-family: var(--font-body);
+    font-weight: normal;
+    letter-spacing: 0.0018em;
+    color: rgba(244,244,244,0.45);
+}
+
+.txt-container input {
+    margin: 7px 0px;
+}
+
+.txt-container textarea {
+    min-height: 80px;
+    resize: vertical;
+    padding: 4px 0;
+}
+
+
+.txt-container:has(textarea) {
+    align-items: flex-start;
+}
+
+.txt-container:has(textarea) .clear-btn {
+    margin-top: 4px;
+}
+
+.pixel-select {
+    background-color: var(--txt-bg);
+    border: var(--pixel-border);
+    box-shadow: var(--pixel-inner-shadow);
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    width: 180px;
+}
+
+.pixel-select select {
+    font-family: var(--font-input);
+    font-weight: var(--semi-bold);
+    font-size: 15px;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    color: var(--text-light);
+    padding: 12px 36px 12px 14px;
+    width: 100%;
+    appearance: none;
+    cursor: url("/Implose.gg-src/assets/images/icons/hand.svg") 8 2, pointer;
+}
+
+.pixel-select::after {
+    content: '';
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 18px;
+    height: 18px;
+    background-image: url('/Implose.gg-src/assets/images/icons/chevron-down.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    filter: brightness(0) invert(1);
+    pointer-events: none;
+}
+
+.pixel-select select option {
+    background-color: var(--panel-bg);
+    color: var(--text-light);
+    padding: 10px;
+}

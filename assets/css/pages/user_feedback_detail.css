@@ -1,0 +1,198 @@
+/*
+Programmer Name: Damian Loh Yi Feng
+Program Name: /assets/css/pages/user_feedback_detail.css
+Description: Styles for the "My Feedback" page (Account Center).
+              - Top row: count pill + add button
+              - Feedback cards (list)
+              - Edit / Add modals (reuse .fb-emoji + .fb-comment
+                tokens from feedback_popup.css so the emoji picker
+                looks the same as the post-quiz popup)
+First Written on: Sunday, 05-Jul-2026
+Edited on: Sunday, 05-Jul-2026
+*/
+
+
+/* ── Toolbar row ── */
+
+.fbd-actions-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 16px;
+    gap: 12px;
+}
+
+.fbd-count {
+    font-family: var(--font-input);
+    font-weight: var(--bold);
+    font-size: 14px;
+    color: var(--text-muted);
+    background-color: var(--panel-bg);
+    border: 2px solid #0d1016;
+    padding: 5px 12px;
+}
+
+
+/* ── Feedback list card ── */
+
+.fbd-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.fbd-item {
+    display: grid;
+    grid-template-columns: 60px 1fr auto;
+    align-items: center;
+    gap: 14px;
+    padding: 14px 16px;
+}
+
+.fbd-item-emoji {
+    font-size: 34px;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.fbd-item-body {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    min-width: 0;
+}
+
+.fbd-item-head {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--font-input);
+    font-size: 13px;
+    flex-wrap: wrap;
+}
+
+.fbd-item-target {
+    font-weight: var(--bold);
+    color: var(--text-light);
+}
+
+.fbd-item-date {
+    color: var(--text-muted);
+    font-size: 12px;
+}
+
+.fbd-item-comment {
+    font-size: 14px;
+    color: var(--text-light);
+    line-height: 1.5;
+    white-space: pre-wrap;
+    word-break: break-word;
+}
+
+.fbd-item-comment--empty {
+    font-style: italic;
+    color: var(--text-muted);
+}
+
+.fbd-item-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.fbd-item-actions .btn-pixel {
+    padding: 8px 14px;
+    font-size: 13px;
+}
+
+
+/* ── Modal backdrop ── */
+
+.fbd-backdrop {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    background: rgba(0, 0, 0, 0.55);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+}
+
+.fbd-backdrop.is-open {
+    display: flex;
+}
+
+
+/* ── Modal card ── */
+
+.fbd-modal {
+    position: relative;
+    width: 100%;
+    max-width: 540px;
+    padding: 28px 28px 22px;
+    color: var(--text-light);
+    font-family: var(--font-body);
+}
+
+.fbd-close {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    width: 32px;
+    height: 32px;
+    background: transparent;
+    border: none;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0.55;
+    transition: opacity 0.18s ease, transform 0.12s ease;
+}
+
+.fbd-close img {
+    width: 16px;
+    height: 16px;
+    filter: brightness(0) invert(1);
+    image-rendering: pixelated;
+}
+
+.fbd-close:hover {
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+.fbd-modal-title {
+    font-family: var(--font-heading);
+    font-size: 18px;
+    margin: 0 0 8px;
+    text-align: center;
+}
+
+.fbd-modal-sub {
+    font-size: 14px;
+    color: var(--text-muted);
+    text-align: center;
+    margin: 0 0 18px;
+}
+
+.fbd-select-wrap {
+    margin-bottom: 18px;
+}
+
+
+/* ── Responsive ── */
+
+@media (max-width: 640px) {
+    .fbd-item {
+        grid-template-columns: 44px 1fr;
+    }
+    .fbd-item-actions {
+        grid-column: 1 / -1;
+        justify-content: flex-end;
+    }
+}

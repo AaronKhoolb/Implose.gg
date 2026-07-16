@@ -1,0 +1,32 @@
+/*
+Programmer Name: Mr. Khoo Lay Bin
+Program Name: /assets/css/components/loader.css
+Description: loading screen css
+First Written on: Sunday, 27-May-2026
+Edited on: Sunday, 31-May-2026
+*/
+
+#loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(3px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    z-index: 9999;
+}
+
+#loader.hide {
+    display: none;
+}
+
+#loader .loader {
+    width: 200px;
+    image-rendering: pixelated;
+}

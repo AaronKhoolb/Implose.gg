@@ -1,0 +1,526 @@
+/*
+Programmer Name: Mr. Ng Jiunn Chyn
+Program Name: /assets/css/pages/user_rewards.css
+Description: User Rewards page styles
+            - Points balance header
+            - Reward catalog grid with cards
+            - Redemption history table
+            - PHP flash messages (success / error)
+            - Empty states
+First Written on: Tuesday, 24-Jun-2026
+Edited on: Wednesday, 02-Jul-2026
+*/
+
+
+/* ── Page Layout ── */
+
+.rewards-page {
+    width: 92%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 4% 0 6% 0;
+}
+
+.rewards-page-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 20px;
+    margin-bottom: 4%;
+    flex-wrap: wrap;
+}
+
+.rewards-page-header-left h1 {
+    font-size: clamp(36px, 3.2vw, 64px);
+    line-height: 1.1;
+    margin-bottom: 1%;
+}
+
+.rewards-page-header-left p {
+    color: var(--text-muted);
+    font-size: clamp(16px, 1.2vw, 22px);
+}
+
+
+/* ── Points Balance Card ── */
+
+.points-balance-card {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 16px 28px;
+    min-width: 200px;
+}
+
+.points-balance-icon {
+    width: 36px;
+    height: 36px;
+    image-rendering: pixelated;
+    flex-shrink: 0;
+}
+
+.points-balance-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.points-balance-label {
+    font-family: var(--font-heading);
+    font-size: clamp(7px, 0.55vw, 9px);
+    color: var(--text-muted);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+}
+
+.points-balance-value {
+    font-family: var(--font-input);
+    font-size: clamp(28px, 2.2vw, 44px);
+    font-weight: var(--extra-bold);
+    letter-spacing: 0.5px;
+    color: #FFD447;
+    text-shadow: 0 0 20px rgba(255, 212, 71, 0.3);
+    line-height: 1;
+}
+
+
+/* ── Section Titles ── */
+
+.rewards-section-title {
+    font-size: clamp(20px, 1.6vw, 32px);
+    margin-bottom: 3%;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+
+/* ── Reward Catalog Grid ── */
+
+.rewards-catalog {
+    margin-bottom: 5%;
+}
+
+.rewards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+.reward-card {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.reward-card:hover {
+    transform: translateY(-4px);
+}
+
+/* Card image */
+.reward-card-image {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    background-color: var(--panel-bg-light);
+    border-bottom: 3px solid var(--panel-border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+}
+
+.reward-card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.reward-card-image .reward-placeholder-icon {
+    font-size: 48px;
+    opacity: 0.4;
+}
+
+/* Out of stock overlay */
+.reward-card-image .out-of-stock-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.reward-card-image .out-of-stock-overlay span {
+    font-family: var(--font-heading);
+    font-size: clamp(9px, 0.7vw, 12px);
+    color: #ef4444;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    text-shadow: 0 2px 0 rgba(0, 0, 0, 0.6);
+}
+
+
+/* Card body */
+.reward-card-body {
+    padding: 14px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    flex: 1;
+}
+
+.reward-card-title {
+    font-size: clamp(15px, 1.1vw, 20px);
+    font-weight: var(--bold);
+    line-height: 1.3;
+}
+
+.reward-card-description {
+    font-size: clamp(12px, 0.85vw, 15px);
+    color: var(--text-muted);
+    line-height: 1.5;
+    flex: 1;
+    max-height: 4.5em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.reward-card-meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    margin-top: 4px;
+}
+
+.reward-card-points {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-weight: var(--bold);
+    font-size: clamp(14px, 1vw, 18px);
+    color: #f59e0b;
+    text-shadow: 0 0 12px rgba(245, 158, 11, 0.3);
+}
+
+.reward-card-points img {
+    width: 18px;
+    height: 18px;
+    filter: invert(59%) sepia(82%) saturate(500%) hue-rotate(30deg) brightness(105%);
+}
+
+.reward-card-stock {
+    font-size: clamp(10px, 0.75vw, 13px);
+    color: var(--text-muted);
+}
+
+.reward-card-stock.low {
+    color: #ef4444;
+}
+
+
+/* Redeem button */
+.reward-card-footer {
+    padding: 0 16px 14px;
+}
+
+.btn-redeem {
+    width: 100%;
+    padding: 10px 16px;
+    font-size: clamp(13px, 0.95vw, 16px);
+    text-align: center;
+}
+
+.btn-redeem:disabled,
+.btn-redeem.disabled {
+    opacity: 0.4;
+    pointer-events: none;
+}
+
+
+/* ── Redemption History ── */
+
+.rewards-history {
+    margin-bottom: 4%;
+}
+
+.rewards-history-panel {
+    padding: 20px;
+}
+
+.history-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.history-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 16px 24px;
+    background-color: var(--panel-bg-light);
+    border: 3px solid var(--panel-border);
+    gap: 20px;
+}
+
+.history-item-left {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    min-width: 0;
+}
+
+.history-item-title {
+    font-size: clamp(14px, 1vw, 18px);
+    font-weight: var(--bold);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.history-item-date {
+    font-size: clamp(11px, 0.8vw, 14px);
+    color: var(--text-muted);
+}
+
+.history-item-right {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-shrink: 0;
+}
+
+.history-item-right img {
+    width: 22px;
+    height: 22px;
+    display: block;
+    flex-shrink: 0;
+    image-rendering: pixelated;
+}
+
+.history-item-points {
+    font-weight: var(--bold);
+    font-size: clamp(16px, 1.2vw, 20px);
+    line-height: 1;
+    color: #ef4444;
+}
+
+.history-item-points-refund {
+    color: #4ADE80;
+}
+
+.history-status-badge {
+    display: inline-block;
+    margin-left: 8px;
+    padding: 2px 8px;
+    font-size: 10px;
+    font-weight: var(--bold);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    border: 2px solid;
+    vertical-align: middle;
+}
+
+.history-status-pending {
+    color: #f59e0b;
+    background: rgba(245, 158, 11, 0.15);
+    border-color: rgba(245, 158, 11, 0.5);
+}
+
+.history-status-approved {
+    color: #4ADE80;
+    background: rgba(74, 222, 128, 0.15);
+    border-color: rgba(74, 222, 128, 0.5);
+}
+
+.history-status-rejected {
+    color: #ef4444;
+    background: rgba(239, 68, 68, 0.15);
+    border-color: rgba(239, 68, 68, 0.5);
+}
+
+
+/* ── Confirmation Modal ── */
+
+.reward-modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.75);
+    z-index: 9999;
+    align-items: center;
+    justify-content: center;
+}
+
+.reward-modal-overlay.active {
+    display: flex;
+}
+
+.reward-modal {
+    width: 90%;
+    max-width: 420px;
+    padding: 28px 30px;
+    text-align: center;
+}
+
+.reward-modal-icon {
+    font-size: 48px;
+    display: block;
+    margin-bottom: 14px;
+}
+
+.reward-modal-title {
+    font-size: clamp(18px, 1.4vw, 26px);
+    margin-bottom: 8px;
+}
+
+.reward-modal-text {
+    color: var(--text-muted);
+    font-size: clamp(13px, 0.95vw, 16px);
+    line-height: 1.6;
+    margin-bottom: 6px;
+}
+
+.reward-modal-cost {
+    font-size: clamp(20px, 1.6vw, 32px);
+    font-weight: var(--extra-bold);
+    color: #f59e0b;
+    text-shadow: 0 0 12px rgba(245, 158, 11, 0.3);
+    margin-bottom: 20px;
+    display: block;
+}
+
+.reward-modal-buttons {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+}
+
+.reward-modal-buttons .btn-red {
+    padding: 10px 28px;
+    font-size: clamp(13px, 0.95vw, 16px);
+}
+
+.reward-modal-buttons .btn-pixel {
+    padding: 10px 28px;
+    font-size: clamp(13px, 0.95vw, 16px);
+}
+
+
+/* ── Toast Notification ── */
+
+.reward-toast {
+    position: fixed;
+    top: 30px;
+    right: 30px;
+    z-index: 10000;
+    padding: 14px 24px;
+    min-width: 280px;
+    max-width: 420px;
+    border: var(--pixel-border);
+    box-shadow:
+        var(--pixel-shadow),
+        var(--pixel-inner-shadow);
+    font-size: clamp(13px, 0.95vw, 16px);
+    font-weight: var(--bold);
+    transform: translateX(120%);
+    transition: transform 0.35s ease;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.reward-toast.show {
+    transform: translateX(0);
+}
+
+.reward-toast.success {
+    background-color: #166534;
+    color: #bbf7d0;
+}
+
+.reward-toast.error {
+    background-color: #991b1b;
+    color: #fecaca;
+}
+
+.reward-toast-icon {
+    font-size: 20px;
+    flex-shrink: 0;
+}
+
+
+/* ── Empty State ── */
+
+.rewards-empty {
+    text-align: center;
+    padding: 40px 20px;
+}
+
+.rewards-empty-icon {
+    font-size: 48px;
+    display: block;
+    margin-bottom: 12px;
+}
+
+.rewards-empty-text {
+    color: var(--text-muted);
+    font-size: clamp(14px, 1vw, 18px);
+    line-height: 1.6;
+}
+
+
+/* ── PHP Flash Messages ── */
+
+.reward-flash-success {
+    background-color: rgba(52, 211, 153, 0.1);
+    border-color: rgba(52, 211, 153, 0.4);
+    color: #3dd19b;
+    font-size: clamp(13px, 0.95vw, 16px);
+    line-height: 1.6;
+}
+
+.reward-flash-error {
+    font-size: clamp(13px, 0.95vw, 16px);
+    line-height: 1.6;
+}
+
+
+/* ── Responsive ── */
+
+@media (max-width: 900px) {
+    .rewards-page-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .rewards-grid {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    }
+}
+
+@media (max-width: 600px) {
+    .rewards-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .reward-modal-buttons {
+        flex-direction: column;
+    }
+
+    .reward-modal-buttons .btn-red,
+    .reward-modal-buttons .btn-pixel {
+        width: 100%;
+    }
+}

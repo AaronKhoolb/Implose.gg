@@ -1,0 +1,178 @@
+/*
+Programmer Name: Mr. Chong Ray Han
+Program Name: /assets/css/pages/user_join_room.css
+Description: Styles for the live quiz join page
+First Written on: Thursday, 02-Jul-2026
+Edited on: Thursday, 02-Jul-2026
+*/
+
+/* extra tokens on top of global.css */
+:root {
+    --space-900: #0a0e16;
+    --space-800: #0d1016;
+    --gold-500: #f3b51f;
+    --moss-700: #2f5a2a;
+
+    --pixel-shadow-sm: 0 4px 0 rgba(0, 0, 0, 0.35);
+    --pixel-panel-shadow: 0 0 0 4px var(--panel-border), var(--pixel-shadow), var(--pixel-inner-shadow);
+    --pixel-text-shadow: 0 4px 0 var(--moss-700), 0 8px 0 rgba(0, 0, 0, 0.55);
+    --focus-ring: 0 0 0 3px rgba(243, 181, 31, 0.35);
+}
+
+/* full screen space background */
+html,
+body {
+    height: 100%;
+}
+
+body {
+    background-color: var(--space-900);
+    background-image: url("/Implose.gg-src/assets/images/bg/dashboard_bg.avif");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    color: #fff;
+    min-height: 100vh;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: rgba(10, 14, 22, 0.6);
+    z-index: 0;
+}
+
+.pixel-panel {
+    background-color: var(--panel-bg);
+    border: var(--pixel-border);
+    box-shadow: var(--pixel-panel-shadow);
+}
+
+.pixel-title {
+    color: var(--text-light);
+    text-shadow: var(--pixel-text-shadow);
+}
+
+.join-shell {
+    position: relative;
+    z-index: 1;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 22px;
+    padding: 26px;
+}
+
+.join-logo {
+    height: 42px;
+    image-rendering: pixelated;
+}
+
+.join-panel {
+    width: 100%;
+    max-width: 460px;
+    padding: 30px 28px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    text-align: center;
+}
+
+.join-eyebrow {
+    font-family: var(--font-heading);
+    font-size: 9px;
+    color: var(--gold-500);
+    letter-spacing: 2px;
+}
+
+.join-title {
+    font-size: 30px;
+}
+
+.join-sub {
+    font-size: 16px;
+    color: var(--text-muted);
+    margin-bottom: 8px;
+}
+
+.join-error {
+    width: 100%;
+    color: var(--btn-red);
+    background-color: rgba(239, 62, 18, 0.15);
+    border-left: 4px solid var(--btn-red);
+    padding: 10px 14px;
+    text-align: left;
+}
+
+/* big code input */
+.join-code-box {
+    background: var(--panel-bg-light);
+    border: var(--pixel-border);
+    box-shadow: var(--pixel-inner-shadow);
+    padding: 4px 12px;
+    margin-bottom: 14px;
+    transition: border-color 0.12s, box-shadow 0.12s;
+}
+
+.join-code-box:focus-within {
+    border-color: var(--gold-500);
+    box-shadow: var(--focus-ring), var(--pixel-inner-shadow);
+}
+
+.join-code-box input {
+    width: 100%;
+    margin: 12px 0;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: #fff;
+    font-family: var(--font-heading);
+    font-size: 24px;
+    letter-spacing: 6px;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.join-code-box input::placeholder {
+    font-family: var(--font-body);
+    color: var(--txt-placeholder);
+    font-size: 18px;
+    letter-spacing: 2px;
+}
+
+.join-btn {
+    width: 100%;
+    padding: 15px 38px;
+    font-size: 18px;
+    font-weight: var(--bold);
+    color: var(--text-light);
+    background: var(--btn-red);
+    border: var(--pixel-border);
+    box-shadow: var(--pixel-shadow), var(--pixel-inner-shadow);
+    text-shadow: 0 3px 0 rgba(0, 0, 0, 0.45);
+    transition: transform 0.12s, background-color 0.12s;
+}
+
+.join-btn:hover {
+    background: var(--btn-red-hover);
+    transform: translateY(-2px);
+}
+
+.join-btn:active {
+    transform: translateY(1px);
+    box-shadow: var(--pixel-shadow-sm), var(--pixel-inner-shadow);
+}
+
+.join-back {
+    font-size: 15px;
+    color: var(--text-muted);
+    text-decoration: none;
+}
+
+.join-back:hover {
+    color: var(--txt-focus);
+}

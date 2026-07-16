@@ -1,0 +1,49 @@
+/*
+Programmer Name: Mr. Khoo Lay Bin
+Program Name: /assets/css/global/fonts.css
+Description: Local fonts
+First Written on: Thursday, 18-Jun-2026
+Edited on: Thursday, 18-Jun-2026
+*/
+
+@font-face {
+    font-family: "Inter";
+    src: url("/Implose.gg-src/assets/fonts/Inter/Inter-VariableFont_opsz,wght.ttf") format("truetype");
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Inter";
+    src: url("/Implose.gg-src/assets/fonts/Inter/Inter-Italic-VariableFont_opsz,wght.ttf") format("truetype");
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Saira";
+    src: url("/Implose.gg-src/assets/fonts/Saira/Saira-VariableFont_wdth,wght.ttf") format("truetype");
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Saira";
+    src: url("/Implose.gg-src/assets/fonts/Saira/Saira-Italic-VariableFont_wdth,wght.ttf") format("truetype");
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Pixelify Sans";
+    src: url("/Implose.gg-src/assets/fonts/Pixelify_Sans/PixelifySans-VariableFont_wght.ttf") format("truetype");
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Press Start 2P";
+    src: url("/Implose.gg-src/assets/fonts/Press_Start_2P/PressStart2P-Regular.ttf") format("truetype");
+    font-style: normal;
+    font-display: swap;
+}

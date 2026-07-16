@@ -1,0 +1,105 @@
+/*
+Programmer Name: Mr. Khoo Lay Bin
+Program Name: /assets/css/components/db_error.css
+Description: database error page css
+First Written on: Thursday, 18-May-2026
+Edited on: Thursday, 18-Jun-2026
+*/
+
+.error-overlay{
+    position: fixed;
+    inset: 0;
+    background-image: url('/Implose.gg-src/assets/images/bg/dashboard_bg.avif');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    z-index: 98;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.error-header-nav{
+    position: absolute;
+    top: 20px;
+    left: 30px;
+
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+
+.error-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+.error-image{  
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.error-image img{
+    width: 380px;
+    margin-bottom: 8px;
+}
+
+.error-image .error-title{
+    font-size: 35px;
+    font-weight: var(--bold);
+    margin-bottom: 10px;
+}
+
+.error-image .error-description{
+    font-size: 15px;
+    text-align: center;
+}
+
+
+.error-details{
+    width: 90%;
+    max-width: 950px;
+    padding: 20px 30px;
+    margin-bottom: 30px;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.error-details .error-details-icon{
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 2px;
+}
+
+.error-details .error-code{
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.error-details hr {
+    width: 100%;
+    border: none;
+    border-top: 2px solid rgba(0, 0, 0, 0.6);
+    margin-bottom: 10px;;
+}
+
+.error-details .error-details-icon img{
+    width: 23px;
+    filter: brightness(0) invert(1);
+}  
+
+.error-details .error-details-message{
+    line-height: 1.5;
+}

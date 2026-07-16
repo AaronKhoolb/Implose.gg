@@ -1,0 +1,513 @@
+/*
+Programmer Name: Mr. Ng Jiunn Chyn
+Program Name: /assets/css/pages/admin_learning_analytics.css
+Description: Admin Learning Analytics dashboard styles
+            - Glass-morphic stat cards
+            - Chart containers
+            - User performance table
+            - Behavior distribution panel
+            - Search toolbar
+First Written on: Tuesday, 24-Jun-2026
+Edited on: Tuesday, 24-Jun-2026
+*/
+
+
+/* ── Page Header ── */
+
+.la-page-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 28px;
+    flex-wrap: wrap;
+}
+
+.la-page-header-left h1 {
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--admin-text);
+    margin: 0 0 6px;
+    letter-spacing: -0.01em;
+}
+
+.la-page-header-left p {
+    font-size: 14px;
+    color: var(--admin-text-muted);
+    margin: 0;
+}
+
+
+/* ── Stat Cards Row ── */
+
+.la-stats-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-bottom: 28px;
+}
+
+.la-stat-card {
+    background: var(--admin-surface);
+    border: 1px solid var(--admin-sidebar-border);
+    border-radius: var(--admin-radius);
+    padding: 24px 26px 28px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    transition: border-color var(--admin-transition), box-shadow var(--admin-transition);
+}
+
+.la-stat-card:hover {
+    border-color: rgba(138, 235, 255, 0.2);
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.3);
+}
+
+.la-stat-label {
+    display: block;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--admin-text-muted);
+}
+
+.la-stat-value {
+    display: block;
+    font-size: 48px;
+    font-weight: 700;
+    color: var(--admin-text);
+    line-height: 1;
+}
+
+.la-stat-value .la-stat-unit {
+    font-size: 20px;
+    color: var(--admin-text-muted);
+    font-weight: 500;
+    margin-left: 2px;
+}
+
+.la-stat-value.accent-cyan {
+    color: var(--admin-accent-text);
+}
+
+.la-stat-value.accent-green {
+    color: #4ADE80;
+}
+
+.la-stat-value.accent-orange {
+    color: #f59e0b;
+}
+
+.la-stat-value.accent-red {
+    color: #ef4444;
+}
+
+.la-stat-icon {
+    position: absolute;
+    top: 18px;
+    right: 20px;
+    width: 52px;
+    height: 52px;
+    opacity: 0.25;
+    pointer-events: none;
+}
+
+.la-stat-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    filter: invert(1);
+}
+
+.la-stat-sub {
+    font-size: 12px;
+    color: var(--admin-text-muted);
+    margin-top: -4px;
+}
+
+
+/* ── Charts Row ── */
+
+.la-charts-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 28px;
+}
+
+.la-chart-card {
+    background: var(--admin-surface);
+    border: 1px solid var(--admin-sidebar-border);
+    border-radius: var(--admin-radius);
+    padding: 24px;
+    min-height: 340px;
+    transition: border-color var(--admin-transition);
+}
+
+.la-chart-card:hover {
+    border-color: rgba(138, 235, 255, 0.15);
+}
+
+.la-chart-card h3 {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--admin-text);
+    margin: 0 0 20px;
+    letter-spacing: -0.01em;
+}
+
+.la-chart-container {
+    position: relative;
+    width: 100%;
+    height: 270px;
+}
+
+.la-chart-container canvas {
+    width: 100% !important;
+    height: 100% !important;
+}
+
+
+/* ── Progress (Full-Width) Chart ── */
+
+.la-progress-section {
+    margin-bottom: 28px;
+}
+
+.la-progress-card {
+    background: var(--admin-surface);
+    border: 1px solid var(--admin-sidebar-border);
+    border-radius: var(--admin-radius);
+    padding: 24px;
+    min-height: 320px;
+}
+
+.la-progress-card h3 {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--admin-text);
+    margin: 0 0 20px;
+}
+
+.la-progress-container {
+    position: relative;
+    width: 100%;
+    height: 260px;
+}
+
+.la-progress-container canvas {
+    width: 100% !important;
+    height: 100% !important;
+}
+
+
+/* ── User Performance Table ── */
+
+.la-table-section {
+    margin-bottom: 28px;
+}
+
+.la-table-card {
+    background: var(--admin-surface);
+    border: 1px solid var(--admin-sidebar-border);
+    border-radius: var(--admin-radius);
+    overflow: hidden;
+}
+
+
+/* Toolbar */
+
+.la-toolbar {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 20px;
+    border-bottom: 1px solid var(--admin-divider);
+}
+
+.la-toolbar h3 {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--admin-text);
+    margin: 0;
+    margin-right: auto;
+}
+
+.la-search-wrap {
+    position: relative;
+    width: 240px;
+}
+
+.la-search-wrap .search-icon {
+    position: absolute;
+    right: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 16px;
+    height: 16px;
+    filter: invert(1) brightness(0.7);
+    pointer-events: none;
+}
+
+.la-search {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid var(--admin-divider);
+    border-radius: 40px;
+    padding: 9px 36px 9px 16px;
+    font-size: 13px;
+    color: var(--admin-text);
+    outline: none;
+    transition: border-color var(--admin-transition), background var(--admin-transition);
+    box-sizing: border-box;
+}
+
+.la-search:focus {
+    border-color: var(--admin-accent);
+    background: rgba(34, 211, 238, 0.04);
+}
+
+.la-search::placeholder {
+    color: var(--admin-text-dim);
+}
+
+
+/* Table */
+
+.la-table-wrap {
+    overflow-x: auto;
+}
+
+.la-perf-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.la-perf-table th {
+    background: rgba(0, 0, 0, 0.25);
+    padding: 12px 16px;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--admin-text-muted);
+    text-align: left;
+    border-bottom: 1px solid var(--admin-divider);
+    white-space: nowrap;
+}
+
+.la-perf-table td {
+    padding: 14px 16px;
+    font-size: 13px;
+    color: var(--admin-text);
+    border-bottom: 1px solid var(--admin-divider);
+    vertical-align: middle;
+}
+
+.la-perf-table tbody tr {
+    transition: background var(--admin-transition);
+}
+
+.la-perf-table tbody tr:hover {
+    background: var(--admin-surface-hover);
+}
+
+.la-perf-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+
+/* User cell */
+
+.la-user-cell {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.la-user-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: var(--admin-accent-soft);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--admin-accent-text);
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.la-user-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.la-user-name {
+    font-weight: 600;
+}
+
+
+/* Accuracy bar */
+
+.la-accuracy-cell {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.la-accuracy-bar {
+    width: 80px;
+    height: 6px;
+    background: rgba(255, 255, 255, 0.06);
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.la-accuracy-fill {
+    height: 100%;
+    border-radius: 3px;
+}
+
+.la-accuracy-fill.high {
+    background: #4ADE80;
+}
+
+.la-accuracy-fill.mid {
+    background: #f59e0b;
+}
+
+.la-accuracy-fill.low {
+    background: #ef4444;
+}
+
+.la-accuracy-text {
+    font-weight: 600;
+    font-size: 13px;
+    min-width: 42px;
+}
+
+.la-accuracy-text.high {
+    color: #4ADE80;
+}
+
+.la-accuracy-text.mid {
+    color: #f59e0b;
+}
+
+.la-accuracy-text.low {
+    color: #ef4444;
+}
+
+
+/* Topic badge */
+
+.la-topic-badge {
+    display: inline-block;
+    padding: 3px 10px;
+    font-size: 11px;
+    font-weight: 600;
+    border-radius: 40px;
+    background: rgba(239, 68, 68, 0.12);
+    color: #fca5a5;
+    white-space: nowrap;
+}
+
+
+/* Behavior badge */
+
+.la-behavior-badge {
+    display: inline-block;
+    padding: 3px 10px;
+    font-size: 11px;
+    font-weight: 600;
+    border-radius: 40px;
+    white-space: nowrap;
+}
+
+.la-behavior-badge.rushing {
+    background: rgba(239, 68, 68, 0.12);
+    color: #fca5a5;
+}
+
+.la-behavior-badge.struggling {
+    background: rgba(245, 158, 11, 0.12);
+    color: #fcd34d;
+}
+
+.la-behavior-badge.proficient {
+    background: rgba(74, 222, 128, 0.12);
+    color: #86efac;
+}
+
+
+/* ── Empty State ── */
+
+.la-empty-state {
+    text-align: center;
+    padding: 60px 24px;
+    background: var(--admin-surface);
+    border: 1px solid var(--admin-sidebar-border);
+    border-radius: var(--admin-radius);
+}
+
+.la-empty-icon {
+    font-size: 48px;
+    display: block;
+    margin-bottom: 16px;
+}
+
+.la-empty-title {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--admin-text);
+    margin-bottom: 8px;
+}
+
+.la-empty-text {
+    font-size: 14px;
+    color: var(--admin-text-muted);
+    max-width: 400px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+
+/* ── No Table Results ── */
+
+.la-table-empty {
+    text-align: center;
+    padding: 40px 24px;
+    color: var(--admin-text-muted);
+    font-size: 14px;
+}
+
+
+/* ── Responsive ── */
+
+@media (max-width: 1100px) {
+    .la-stats-row {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .la-charts-row {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 700px) {
+    .la-stats-row {
+        grid-template-columns: 1fr;
+    }
+
+    .la-stat-value {
+        font-size: 36px;
+    }
+}

@@ -1,0 +1,279 @@
+/*
+Programmer Name: Damian Loh Yi Feng
+Program Name: /assets/css/components/feedback_popup.css
+Description: Emoji feedback popup — centered modal with 5 emoji ratings and
+            an optional comment box. Uses the global pixel design tokens
+            and fonts so it blends with the user-facing UI.
+First Written on: Saturday, 27-Jun-2026
+Edited on: Saturday, 27-Jun-2026
+*/
+
+
+/* ── Overlay backdrop ── */
+
+.fb-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 9998; /* sits just below achievement popup stack */
+    background: rgba(0, 0, 0, 0.55);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    animation: fb-overlay-in 0.22s ease forwards;
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+}
+
+.fb-overlay--hide {
+    animation: fb-overlay-out 0.24s ease forwards;
+}
+
+@keyframes fb-overlay-in {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+@keyframes fb-overlay-out {
+    from { opacity: 1; }
+    to   { opacity: 0; }
+}
+
+
+/* ── Modal card ── */
+
+.fb-modal {
+    position: relative;
+    width: 100%;
+    max-width: 520px;
+    padding: 28px 28px 22px;
+    color: var(--text-light);
+    font-family: var(--font-body);
+    animation: fb-modal-in 0.45s cubic-bezier(0.18, 0.89, 0.32, 1.28) forwards;
+    transform: scale(0.86) translateY(20px);
+    opacity: 0;
+}
+
+.fb-overlay--hide .fb-modal {
+    animation: fb-modal-out 0.24s ease forwards;
+}
+
+@keyframes fb-modal-in {
+    0%   { transform: scale(0.86) translateY(20px); opacity: 0; }
+    60%  { transform: scale(1.02) translateY(0);    opacity: 1; }
+    100% { transform: scale(1)    translateY(0);    opacity: 1; }
+}
+
+@keyframes fb-modal-out {
+    from { transform: scale(1)    translateY(0);   opacity: 1; }
+    to   { transform: scale(0.92) translateY(10px); opacity: 0; }
+}
+
+
+/* ── Close button ── */
+
+.fb-close {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    width: 32px;
+    height: 32px;
+    background: transparent;
+    border: none;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0.55;
+    transition: opacity 0.18s ease, transform 0.12s ease;
+}
+
+.fb-close img {
+    width: 16px;
+    height: 16px;
+    filter: brightness(0) invert(1);
+    image-rendering: pixelated;
+}
+
+.fb-close:hover {
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+
+/* ── Title + subtitle ── */
+
+.fb-title {
+    font-family: var(--font-heading);
+    font-size: 18px;
+    line-height: 1.25;
+    margin: 0 0 8px;
+    text-align: center;
+}
+
+.fb-subtitle {
+    font-size: 14px;
+    color: var(--text-muted);
+    text-align: center;
+    margin: 0 0 22px;
+}
+
+
+/* ── Emoji row ── */
+
+.fb-emoji-row {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 10px;
+    margin-bottom: 22px;
+}
+
+.fb-emoji {
+    background: var(--panel-bg-light);
+    border: 3px solid #0d1016;
+    box-shadow: inset 0 -3px 0 rgba(0, 0, 0, 0.4);
+    padding: 12px 4px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    color: var(--text-muted);
+    transition: transform 0.14s ease, background 0.18s ease, color 0.18s ease;
+}
+
+.fb-emoji-face {
+    font-size: 32px;
+    line-height: 1;
+    filter: grayscale(0.35);
+    transition: filter 0.18s ease, transform 0.18s ease;
+}
+
+.fb-emoji-label {
+    font-family: var(--font-body);
+    font-size: 11px;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+}
+
+.fb-emoji:hover {
+    transform: translateY(-2px);
+    background: #2a3140;
+}
+
+.fb-emoji:hover .fb-emoji-face {
+    filter: grayscale(0);
+    transform: scale(1.08);
+}
+
+.fb-emoji.selected {
+    background: rgba(239, 62, 18, 0.18);
+    border-color: var(--btn-red);
+    color: var(--text-light);
+}
+
+.fb-emoji.selected .fb-emoji-face {
+    filter: grayscale(0);
+    transform: scale(1.15);
+}
+
+
+/* ── Comment area ── */
+
+.fb-comment-label {
+    display: block;
+    font-size: 14px;
+    color: var(--text-light);
+    margin-bottom: 8px;
+}
+
+.fb-comment-optional {
+    color: var(--text-muted);
+    font-size: 12px;
+}
+
+.fb-comment {
+    width: 100%;
+    min-height: 84px;
+    padding: 12px 14px;
+    background: var(--txt-bg);
+    border: 3px solid #0d1016;
+    box-shadow: inset 0 3px 0 rgba(0, 0, 0, 0.35);
+    color: var(--text-light);
+    font-family: var(--font-input);
+    font-size: 14px;
+    resize: vertical;
+    outline: none;
+    transition: border-color 0.18s ease;
+    box-sizing: border-box;
+}
+
+.fb-comment::placeholder {
+    color: var(--txt-placeholder);
+}
+
+.fb-comment:focus {
+    border-color: var(--txt-focus);
+}
+
+
+/* ── Action buttons ── */
+
+.fb-actions {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    margin-top: 20px;
+}
+
+.fb-skip,
+.fb-submit {
+    /* extends btn-pixel / btn-red from global */
+    flex: 1;
+    font-size: 14px;
+    padding: 12px 18px;
+}
+
+.fb-submit:disabled {
+    background-color: #4a3026;
+    color: rgba(244, 244, 244, 0.45);
+    pointer-events: none;
+    box-shadow:
+        0 4px 0 rgba(0, 0, 0, 0.35),
+        inset 0 4px 0 rgba(255, 255, 255, 0.04),
+        inset 0 -4px 0 rgba(0, 0, 0, 0.25);
+}
+
+
+/* ── Status text ── */
+
+.fb-status {
+    text-align: center;
+    font-size: 13px;
+    color: var(--text-muted);
+    margin-top: 10px;
+    min-height: 16px;
+}
+
+
+/* ── Responsive ── */
+
+@media (max-width: 540px) {
+    .fb-modal {
+        padding: 22px 18px 16px;
+    }
+    .fb-emoji-row {
+        gap: 6px;
+    }
+    .fb-emoji {
+        padding: 10px 2px;
+    }
+    .fb-emoji-face {
+        font-size: 26px;
+    }
+    .fb-emoji-label {
+        font-size: 9px;
+    }
+    .fb-actions {
+        flex-direction: column;
+    }
+}

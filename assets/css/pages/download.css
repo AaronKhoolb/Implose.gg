@@ -1,0 +1,112 @@
+/*
+Programmer Name: Mr. Khoo Lay Bin
+Program Name: /assets/css/pages/download.css
+Description: PWA install guide page css
+First Written on: Sunday, 05-Jul-2026
+Edited on: Sunday, 05-Jul-2026
+*/
+
+.download-body {
+    padding: 100px 40px 60px;
+}
+
+
+/* Back button */
+.download-back-btn {
+    position: fixed;
+    top: 40px;
+    left: 40px;
+    z-index: 10;
+    padding: 12px 14px;
+}
+
+.download-back-btn img {
+    width: 20px;
+    height: 20px;
+    filter: brightness(0) invert(1);
+    pointer-events: none;
+    cursor: inherit;
+}
+
+
+/* Shell */
+.download-shell {
+    width: 100%;
+    max-width: 1180px;
+    margin: 0 auto;
+}
+
+
+/* Header */
+.download-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.download-header .pixel-title {
+    font-size: 44px;
+    margin-bottom: 14px;
+}
+
+.download-subtitle {
+    color: var(--text-muted);
+    font-size: 18px;
+    line-height: 1.5;
+    max-width: 720px;
+    margin: 0 auto;
+}
+
+
+/* Platform cards grid */
+.download-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 28px;
+    margin-bottom: 32px;
+}
+
+.download-card {
+    padding: 26px 28px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.download-card-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+}
+
+.platform-title {
+    font-size: 30px;
+}
+
+.browser-badge {
+    padding: 8px 14px;
+    font-size: 14px;
+    pointer-events: none;
+}
+
+
+/* Steps */
+.download-steps {
+    list-style: decimal;
+    padding-left: 26px;
+    margin: 0;
+
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+
+    font-size: 17px;
+    line-height: 1.55;
+    color: var(--text-light);
+}
+
+.download-steps li b {
+    color: #f3b51f;
+    font-weight: var(--bold);
+}

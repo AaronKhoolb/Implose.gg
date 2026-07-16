@@ -1,0 +1,42 @@
+/*
+Programmer Name: Mr. Khoo Lay Bin
+Program Name: /assets/css/pages/welcome.css
+Description: welcome bg and mascot styling
+First Written on: Sunday, 24-May-2026
+Edited on: Tuesday, 26-May-2026
+*/
+
+.welcome-bg {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+}
+
+.welcome-brand {
+    font-size: 4.8vw;
+    top: 15vh;
+    left: 5vw;
+    position: absolute;
+    rotate: -8deg;
+}
+
+.welcome-img-container {
+    position: absolute;
+    right: 7vw;
+    bottom: -3vh;
+    width: 44%;
+}
+
+.welcome-img-container::before {
+    content: '';
+    position: absolute;
+    inset: 5%;
+    background-color: rgba(105, 72, 231, 0.45);
+    filter: blur(100px);
+    border-radius: 50%;
+}
+
+.welcome-img {
+    position: relative;
+    width: 100%;
+}

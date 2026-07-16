@@ -1,0 +1,267 @@
+/* guest_homepage.css - Guest homepage styles */
+
+body {
+    background-color: #14181c;
+    color: #ffffff;
+    margin: 0;
+    padding: 0;
+}
+
+
+/* ===== Hero section ===== */
+
+.hero-section {
+    text-align: center;
+    padding: 100px 20px 80px 20px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.hero-slogan {
+    font-family: "Press Start 2P", monospace;
+    font-size: clamp(28px, 5vw, 56px);
+    line-height: 1.2;
+    color: #ffffff;
+    margin: 0 0 25px 0;
+    text-shadow: 4px 4px 0 #ef3e12;
+}
+
+.hero-subtitle {
+    font-family: "Pixelify Sans", sans-serif;
+    font-size: clamp(16px, 1.5vw, 22px);
+    color: #cccccc;
+    line-height: 1.5;
+    margin: 0 auto 40px auto;
+    max-width: 700px;
+}
+
+.hero-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.hero-btn-primary {
+    display: inline-block;
+    padding: 14px 32px;
+    font-family: "Press Start 2P", monospace;
+    font-size: 14px;
+    background-color: #ef3e12;
+    color: #ffffff;
+    text-decoration: none;
+    border: 3px solid #ef3e12;
+}
+
+.hero-btn-primary:hover {
+    background-color: #d63600;
+}
+
+.hero-btn-secondary {
+    display: inline-block;
+    padding: 14px 32px;
+    font-family: "Press Start 2P", monospace;
+    font-size: 14px;
+    background-color: transparent;
+    color: #ffffff;
+    text-decoration: none;
+    border: 3px solid #2d323f;
+}
+
+.hero-btn-secondary:hover {
+    border-color: #ffffff;
+}
+
+
+
+
+
+.section-title {
+    font-family: "Press Start 2P", monospace;
+    font-size: clamp(20px, 2.5vw, 32px);
+    text-align: center;
+    color: #ffffff;
+    margin: 0 0 15px 0;
+}
+
+.section-subtitle {
+    font-family: "Pixelify Sans", sans-serif;
+    font-size: 16px;
+    text-align: center;
+    color: #cccccc;
+    margin: 0 0 50px 0;
+}
+
+
+/* ===== Features section ===== */
+
+.features-section {
+    background-color: rgba(30, 35, 41, 0.6);
+    border: 3px solid #2d323f;
+    padding: 60px 30px;
+    max-width: 1160px;
+    width: calc(100% - 40px);
+    margin: 60px auto;
+    box-sizing: border-box;
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+.feature-card {
+    background-color: rgba(30, 35, 41, 0.85);
+    border: 3px solid #2d323f;
+    padding: 30px 25px;
+    text-align: center;
+    transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.feature-card:hover {
+    transform: translateY(-4px);
+    border-color: #ef3e12;
+}
+
+.feature-card img {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 15px;
+    image-rendering: pixelated;
+    filter: brightness(0) invert(1);
+}
+
+.feature-card h3 {
+    font-family: "Press Start 2P", monospace;
+    font-size: 15px;
+    color: #ffffff;
+    margin: 0 0 12px 0;
+}
+
+.feature-card p {
+    font-family: "Pixelify Sans", sans-serif;
+    font-size: 15px;
+    color: #cccccc;
+    line-height: 1.5;
+    margin: 0;
+}
+
+
+/* ===== How it works section ===== */
+
+.steps-section {
+    background-color: rgba(30, 35, 41, 0.6);
+    border: 3px solid #2d323f;
+    padding: 60px 30px;
+    max-width: 1160px;
+    width: calc(100% - 40px);
+    margin: 60px auto;
+    box-sizing: border-box;
+}
+
+.steps-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.step-card {
+    text-align: center;
+    padding: 25px 15px;
+}
+
+.step-number {
+    display: inline-block;
+    font-family: "Press Start 2P", monospace;
+    font-size: 24px;
+    color: #ef3e12;
+    background-color: rgba(239, 62, 18, 0.10);
+    border: 3px solid #ef3e12;
+    padding: 10px 15px;
+    margin-bottom: 18px;
+}
+
+.step-card h3 {
+    font-family: "Press Start 2P", monospace;
+    font-size: 14px;
+    color: #ffffff;
+    margin: 0 0 12px 0;
+}
+
+.step-card p {
+    font-family: "Pixelify Sans", sans-serif;
+    font-size: 14px;
+    color: #cccccc;
+    line-height: 1.5;
+    margin: 0;
+}
+
+
+/* ===== Final CTA ===== */
+
+.final-cta-section {
+    text-align: center;
+    padding: 80px 20px;
+    background-color: rgba(30, 35, 41, 0.6);
+    border-top: 3px solid #2d323f;
+    border-bottom: 3px solid #2d323f;
+}
+
+.final-cta-section h2 {
+    font-family: "Press Start 2P", monospace;
+    font-size: clamp(20px, 2.5vw, 32px);
+    color: #ffffff;
+    margin: 0 0 15px 0;
+}
+
+.final-cta-section p {
+    font-family: "Pixelify Sans", sans-serif;
+    font-size: 16px;
+    color: #cccccc;
+    margin: 0 0 30px 0;
+}
+
+
+/* ===== Footer ===== */
+
+.guest-footer {
+    text-align: center;
+    padding: 30px 20px;
+    background-color: rgba(20, 24, 28, 0.9);
+    border-top: 2px solid #2d323f;
+    font-family: "Pixelify Sans", sans-serif;
+    font-size: 14px;
+    color: #888888;
+}
+
+.guest-footer p {
+    margin: 0;
+}
+
+
+/* ===== Responsive ===== */
+
+@media (max-width: 900px) {
+    .features-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .steps-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 550px) {
+    .features-grid {
+        grid-template-columns: 1fr;
+    }
+    .steps-grid {
+        grid-template-columns: 1fr;
+    }
+    .hero-btn-primary,
+    .hero-btn-secondary {
+        width: 100%;
+        text-align: center;
+        box-sizing: border-box;
+    }
+}

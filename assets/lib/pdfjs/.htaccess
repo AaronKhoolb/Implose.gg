@@ -1,0 +1,3 @@
+# Enable MIME type for JavaScript modules (.mjs files)
+# This is required for PDF.js to work correctly in modern browsers
+AddType application/javascript .mjs

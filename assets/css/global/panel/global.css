@@ -1,0 +1,58 @@
+/*
+Programmer Name: Mr. Khoo Lay Bin
+Program Name: /assets/css/global/panel/global.css
+Description: a global css that fix the font, size, color, ... for all pages (included in head.php)
+First Written on: Wednesday, 27-May-2026
+Edited on: Thursday, 18-Jun-2026
+*/
+
+
+:root {
+    --green-primary: #4ADE80;
+    --green-secondary: #22c55e;
+}
+
+
+* {
+    font-family: "Inter";
+    text-rendering: optimizeLegibility;
+    font-optical-sizing: auto;
+    letter-spacing: 0.0018em;
+}
+
+html {
+    user-select: none;
+}
+
+img {
+    width: 100%;
+    -webkit-user-drag: none;
+}
+
+button {
+    cursor: pointer;
+}
+
+
+body {
+    height: 100%;
+    background-image: url('/Implose.gg-src/assets/images/bg/dashboard_bg.avif');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    color: white;
+}
+
+
+input,
+textarea,
+select {
+    color: white;
+}
+
+
+* {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.3) transparent;
+}

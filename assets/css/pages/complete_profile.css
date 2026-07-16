@@ -1,0 +1,273 @@
+/*
+Programmer Name: Mr. Khoo Lay Bin
+Program Name: /assets/css/pages/complete_profile.css
+Description: complete profile page styling
+First Written on: Sunday, 18-May-2026
+Edited on: Tuesday, 26-May-2026
+*/
+
+body {
+    height: 100vh;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* main panel */
+.profile_setup-container {
+    width: 1000px;
+    height: 630px;
+    padding: 35px 28px 0px 28px;
+    
+    display: flex;
+    flex-direction: column;
+}
+
+.profile_setup-header {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+.profile_setup-header .title {
+    font-size: 50px;
+    font-weight: var(--bold);
+    margin-bottom: 10px;
+}
+
+.profile_setup-header .subtitle {
+    color: var(--text-muted);
+}
+
+/* form */
+.profile_setup-form {
+    gap: 50px;
+    display: flex;
+}
+
+.profile_avatar-container {
+    width: 390px;
+    height: 100%;
+    padding: 10px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.profile_info-container {
+    width: calc(100% - 390px);
+    height: 100%;
+    
+    display: flex;
+    flex-direction: column;
+}
+
+/* avatar */
+.avatar-title {
+    font-size: 20px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    font-weight: var(--semi-bold);
+}
+
+.avatar-preview {
+    width: 230px;
+    height: 230px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-bottom: 25px;
+}
+
+.avatar-preview img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* avatar choice */
+.avatar-choice {
+    width: 100%;
+    height: 110px;
+
+    overflow-x: auto;
+    overflow-y: hidden;
+    scrollbar-width: auto;
+    scrollbar-color: auto;
+    
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.avatar-choice::-webkit-scrollbar {
+    height: 12px;
+}
+
+.avatar-choice::-webkit-scrollbar-thumb {
+    background-color: var(--btn-red);
+    border-radius: 0;
+}
+
+.avatar_file, 
+.avatar-option {
+    width: 80px;
+    height: 80px;
+    flex-shrink: 0;
+    overflow: hidden;
+    background-color: var(--panel-bg-light);
+    box-shadow: none;
+    transition: background-color 0.15s ease, box-shadow 0.15s ease;
+    cursor: url("/Implose.gg-src/assets/images/icons/hand.svg") 8 2, pointer;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.avatar_file input, 
+.avatar-option input {
+    display: none;
+}
+
+.avatar_file:hover,
+.avatar-option:hover {
+    background-color: var(--panel-bg);
+}
+
+.avatar-option:has(input:checked) {
+    background-color: var(--panel-bg);
+    box-shadow:
+        0 0 0 4px var(--txt-focus),
+        var(--pixel-shadow),
+        var(--pixel-inner-shadow);
+}
+
+.avatar_file:active,
+.avatar-option:active {
+    box-shadow:
+        0 4px 0 rgba(0, 0, 0, 0.45),
+        var(--pixel-inner-shadow);
+}
+
+.avatar_file img {
+    width: 60%;
+    height: 60%;
+    object-fit: cover;
+    filter: brightness(0) invert(1);
+    pointer-events: none;
+}
+
+.default-avatar-list {
+    height: 80px;
+    display: flex;
+    gap: 15px;
+}
+
+.small-avatar {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    cursor: url("/Implose.gg-src/assets/images/icons/hand.svg") 8 2, pointer;
+}
+
+.small-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    pointer-events: none;
+}
+
+/* RHS */
+.username-container{
+    margin-bottom: 28px;
+}
+
+.form-field{
+    display: flex;
+    flex-direction: column;
+}
+
+.form-field label, 
+.gender-title {
+    font-size: 22px;
+    font-weight: var(--semi-bold);
+    margin-bottom: 10px;
+}
+
+.details-container {
+    display: flex;
+    flex: 1;
+    gap: 20px;
+}
+
+.age-container{
+    width: 35%;
+}
+
+.gender-container{
+    width: 65%;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.gender-radio-btn{
+    display: flex;
+    gap: 10px;
+}
+    
+
+.gender-radio-btn label{
+    width: 50%;
+    height: 52px;
+    background-color: var(--panel-bg-light);
+    box-shadow: var(--pixel-inner-shadow);
+    transition: background-color 0.15s ease, box-shadow 0.15s ease;
+    font-size: 16px;
+    gap: 8px;
+    cursor: url("/Implose.gg-src/assets/images/icons/hand.svg") 8 2, pointer;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.gender-radio-btn label img{
+    height: 23px;
+    filter: brightness(0) invert(1);
+    pointer-events: none;
+}
+
+.gender-radio-btn label input{
+    display: none;
+}
+
+.gender-radio-btn label:hover {
+    background-color: var(--panel-bg);
+}
+
+.gender-radio-btn label:active {
+    box-shadow:
+        0 4px 0 rgba(0, 0, 0, 0.45),
+        var(--pixel-inner-shadow);
+}
+
+.gender-radio-btn label:has(input:checked) {
+    background-color: var(--panel-bg);
+    box-shadow:
+        0 0 0 4px var(--txt-focus),
+        var(--pixel-shadow),
+        var(--pixel-inner-shadow);
+}
+
+.error_msg-container {
+    margin-bottom: 10px;
+}
+
+.submit_profile-btn {
+    margin-bottom: 2px;
+    font-size: 20px;
+    font-weight: var(--bold);
+}

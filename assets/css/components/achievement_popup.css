@@ -1,0 +1,240 @@
+/*
+Programmer Name: Damian Loh Yi Feng
+Program Name: /assets/css/components/achievement_popup.css
+Description: Achievement unlock popup — pixel-panel toast that slides in from
+            the bottom-left, holds for a few seconds, then fades out.
+            Uses the global pixel design tokens (--panel-bg, --pixel-border,
+            --pixel-shadow, etc.) and the global pixel fonts.
+First Written on: Saturday, 27-Jun-2026
+Edited on: Saturday, 27-Jun-2026
+*/
+
+
+/* ── Stack container (bottom-left, fixed) ── */
+
+.ach-popup-stack {
+    position: fixed;
+    left: 24px;
+    bottom: 24px;
+    display: flex;
+    flex-direction: column-reverse; /* newest popup on top */
+    gap: 14px;
+    z-index: 9999;
+    pointer-events: none; /* clicks pass through gaps */
+    max-width: 380px;
+}
+
+
+/* ── Individual popup card ── */
+
+.ach-popup {
+    pointer-events: auto;
+    display: grid;
+    grid-template-columns: 1fr 28px;
+    align-items: center;
+    gap: 8px;
+    padding: 14px 16px;
+    width: 100%;
+    min-width: 320px;
+
+    background-color: var(--panel-bg, #1b2029);
+    border: var(--pixel-border, 4px solid #0d1016);
+    box-shadow:
+        0 0 0 4px var(--panel-border, #303847),
+        var(--pixel-shadow, 0 8px 0 rgba(0, 0, 0, 0.45)),
+        var(--pixel-inner-shadow,
+            inset 0 4px 0 rgba(255, 255, 255, 0.08),
+            inset 0 -4px 0 rgba(0, 0, 0, 0.35));
+
+    color: var(--text-light, #f4f4f4);
+    font-family: var(--font-body, "Pixelify Sans");
+
+    transform: translateX(-120%);
+    opacity: 0;
+    animation: ach-popup-in 0.55s cubic-bezier(0.18, 0.89, 0.32, 1.28) forwards;
+}
+
+.ach-popup--hide {
+    /* release the entry animation's hold on transform/opacity so the
+       exit animation can take over at matching speed. */
+    animation: ach-popup-out 0.55s cubic-bezier(0.55, 0, 0.5, 1) forwards !important;
+    pointer-events: none;
+}
+
+@keyframes ach-popup-in {
+    0%   { transform: translateX(-120%) translateY(20px); opacity: 0; }
+    60%  { transform: translateX(8px)   translateY(0);    opacity: 1; }
+    100% { transform: translateX(0)     translateY(0);    opacity: 1; }
+}
+
+@keyframes ach-popup-out {
+    0%   { transform: translateX(0)     translateY(0);    opacity: 1; }
+    40%  { transform: translateX(8px)   translateY(0);    opacity: 1; }
+    100% { transform: translateX(-120%) translateY(20px); opacity: 0; }
+}
+
+
+/* ── Clickable link wrapper (badge + body) ── */
+
+.ach-popup-link {
+    display: grid;
+    grid-template-columns: 64px 1fr;
+    align-items: center;
+    gap: 14px;
+    text-decoration: none;
+    color: inherit;
+    min-width: 0;
+    transition: filter 0.18s ease;
+}
+
+.ach-popup-link:hover {
+    filter: brightness(1.08);
+}
+
+
+/* ── Badge thumb ── */
+
+.ach-popup-badge {
+    width: 64px;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--panel-bg-light, #242b38);
+    border: 3px solid #0d1016;
+    box-shadow: inset 0 -3px 0 rgba(0, 0, 0, 0.4);
+    overflow: hidden;
+    flex-shrink: 0;
+    position: relative;
+}
+
+.ach-popup-badge img {
+    width: 64px;
+    height: 64px;
+    object-fit: cover;
+    image-rendering: pixelated;
+    display: block;
+}
+
+.ach-popup-badge.ach-popup-badge--fallback::after {
+    content: '★';
+    font-family: var(--font-heading, "Press Start 2P");
+    font-size: 28px;
+    color: var(--btn-red, #ef3e12);
+    text-shadow: 0 2px 0 rgba(0, 0, 0, 0.6);
+}
+
+
+/* ── Body text ── */
+
+.ach-popup-body {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    min-width: 0;
+    flex: 1;
+}
+
+.ach-popup-tag {
+    font-family: var(--font-heading, "Press Start 2P");
+    font-size: 8px;
+    letter-spacing: 0.08em;
+    color: var(--btn-red, #ef3e12);
+    text-transform: uppercase;
+    text-shadow: 0 2px 0 rgba(0, 0, 0, 0.55);
+    line-height: 1.4;
+}
+
+.ach-popup-title {
+    font-family: var(--font-body, "Pixelify Sans");
+    font-size: 18px;
+    font-weight: var(--bold, 700);
+    color: var(--text-light, #f4f4f4);
+    line-height: 1.15;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    text-shadow: 0 2px 0 rgba(0, 0, 0, 0.6);
+}
+
+.ach-popup-desc {
+    font-size: 13px;
+    color: var(--text-muted, #b8bec9);
+    line-height: 1.35;
+    margin-top: 2px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.ach-popup-points {
+    margin-top: 4px;
+    align-self: flex-start;
+    font-family: var(--font-heading, "Press Start 2P");
+    font-size: 9px;
+    letter-spacing: 0.04em;
+    color: #ffd966;
+    padding: 4px 8px;
+    background: rgba(255, 217, 102, 0.12);
+    border: 2px solid rgba(255, 217, 102, 0.45);
+    text-shadow: 0 2px 0 rgba(0, 0, 0, 0.55);
+}
+
+
+/* ── Dismiss button ── */
+
+.ach-popup-close {
+    width: 28px;
+    height: 28px;
+    background: transparent;
+    border: none;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-self: flex-start;
+    opacity: 0.55;
+    transition: opacity 0.18s ease, transform 0.12s ease;
+}
+
+.ach-popup-close img {
+    width: 14px;
+    height: 14px;
+    filter: brightness(0) invert(1);
+    image-rendering: pixelated;
+}
+
+.ach-popup-close:hover {
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+
+/* ── Responsive ── */
+
+@media (max-width: 600px) {
+    .ach-popup-stack {
+        left: 12px;
+        right: 12px;
+        bottom: 12px;
+        max-width: none;
+    }
+    .ach-popup {
+        min-width: 0;
+        grid-template-columns: 1fr 24px;
+        padding: 10px 12px;
+        gap: 6px;
+    }
+    .ach-popup-link {
+        grid-template-columns: 48px 1fr;
+        gap: 10px;
+    }
+    .ach-popup-badge,
+    .ach-popup-badge img {
+        width: 48px;
+        height: 48px;
+    }
+    .ach-popup-title  { font-size: 16px; }
+    .ach-popup-desc   { font-size: 12px; }
+}

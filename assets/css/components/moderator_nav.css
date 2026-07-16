@@ -1,0 +1,595 @@
+/*
+Programmer Name: Mr. Chong Jun Yoong, Mr. Khoo Lay Bin
+Program Name: /assets/css/components/moderator_nav.css
+Description: Moderator sidebar style
+First Written on: Monday, 27-May-2026
+Edited on: Monday, 22-Jun-2026
+*/
+
+:root {
+    /* glass material */
+    --nav-glass-top: rgba(40, 52, 84, 0.55);
+    --nav-glass-bottom: rgba(11, 15, 28, 0.42);
+    --nav-glass-border: rgba(255, 255, 255, 0.12);
+    --nav-glass-highlight: rgba(255, 255, 255, 0.18);
+
+    /* row hover */
+    --nav-row-hover: rgba(255, 255, 255, 0.07);
+
+    /* text */
+    --nav-text: #eef1ff;
+    --nav-text-muted: rgba(223, 228, 255, 0.74);
+    --nav-text-label: rgba(170, 182, 210, 0.62);
+
+    /* layout */
+    --nav-radius: 10px;
+    --nav-radius-sm: 7px;
+    --nav-panel-radius: 22px;
+    --nav-gap: 16px;
+    --nav-sidebar-width: 222px;
+    --nav-sidebar-collapsed-width: 88px;
+    --nav-transition: 0.24s cubic-bezier(0.32, 0.72, 0, 1);
+    --nav-font: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+
+    /* ── Shared admin design tokens ──
+       Used by other admin page stylesheets (admin_users.css, admin_report.css,
+       admin_edit_user.css, admin_export_report.css, …) and inline styles.
+       Previously defined in admin_sidebar.css — kept here so pages using nav.php
+       still inherit them. Do not remove. */
+    --admin-bg: #050816;
+    --admin-sidebar-bg: rgba(15, 19, 33, 0.92);
+    --admin-sidebar-border: rgba(138, 235, 255, 0.10);
+    --admin-surface: #111827;
+    --admin-surface-hover: rgba(138, 235, 255, 0.06);
+    --admin-surface-active: rgba(138, 235, 255, 0.10);
+    --admin-accent: #22d3ee;
+    --admin-accent-soft: rgba(34, 211, 238, 0.15);
+    --admin-accent-glow: rgba(34, 211, 238, 0.25);
+    --admin-accent-text: #8aebff;
+    --admin-orange: #fd591e;
+    --admin-orange-soft: rgba(253, 89, 30, 0.15);
+    --admin-text: #dfe1f6;
+    --admin-text-muted: #859397;
+    --admin-text-dim: rgba(187, 201, 205, 0.6);
+    --admin-divider: rgba(60, 73, 76, 0.40);
+    --admin-radius: 10px;
+    --admin-radius-sm: 6px;
+    --admin-sidebar-width: 190px;
+    --admin-sidebar-collapsed-width: 50px;
+    --admin-transition: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+
+/* ── Body ── */
+body.admin-body {
+    color: var(--nav-text);
+    font-family: var(--nav-font);
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+
+/* ── Floating glass panel ── */
+.mac-sidebar {
+    position: fixed;
+    left: var(--nav-gap);
+    top: var(--nav-gap);
+    bottom: var(--nav-gap);
+    width: var(--nav-sidebar-width);
+    z-index: 100;
+
+    background: linear-gradient(155deg, var(--nav-glass-top), var(--nav-glass-bottom));
+    backdrop-filter: blur(40px) saturate(180%);
+    -webkit-backdrop-filter: blur(40px) saturate(180%);
+    border: 1px solid var(--nav-glass-border);
+    border-radius: var(--nav-panel-radius);
+    box-shadow:
+        0 18px 50px rgba(0, 0, 0, 0.55),
+        0 2px 8px rgba(0, 0, 0, 0.30),
+        inset 0 1px 0 var(--nav-glass-highlight),
+        inset 0 0 30px rgba(255, 255, 255, 0.03);
+
+    display: flex;
+    flex-direction: column;
+    padding: 30px 13px 14px;
+    overflow: hidden auto;
+    transition: width var(--nav-transition), padding var(--nav-transition);
+}
+
+/* soft top sheen */
+.mac-sidebar::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    pointer-events: none;
+    background: radial-gradient(120% 60% at 50% -10%,
+        rgba(255, 255, 255, 0.10), rgba(255, 255, 255, 0) 60%);
+}
+
+.mac-sidebar::-webkit-scrollbar {
+    width: 7px;
+}
+.mac-sidebar::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.16);
+    border-radius: 4px;
+}
+.mac-sidebar::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.30);
+}
+
+
+/* ── Header: brand logo + toggle ── */
+.mac-sidebar-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 2px 6px 16px;
+    margin-bottom: 6px;
+    border-bottom: 1px solid var(--nav-glass-border);
+    flex-shrink: 0;
+    position: relative;
+    z-index: 1;
+}
+
+.mac-app-text {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    min-width: 0;
+    flex: 1;
+}
+
+.mac-app-name {
+    font-family: "Press Start 2P", var(--nav-font);
+    font-weight: 700;
+    font-size: 15px;
+    line-height: 1.2;
+    white-space: nowrap;
+    color: var(--nav-text);
+    text-shadow: 0 4px 0 rgba(47, 90, 42, 1), 0 8px 0 rgba(0, 0, 0, 0.55);
+}
+
+.mac-app-role {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--nav-text-label);
+    white-space: nowrap;
+    line-height: 1.3;
+}
+
+#mac_toggle_btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    margin-left: auto;
+    padding: 5px;
+    flex-shrink: 0;
+    background: transparent;
+    border: none;
+    border-radius: var(--nav-radius-sm);
+    cursor: pointer;
+    transition: background var(--nav-transition);
+}
+#mac_toggle_btn:hover {
+    background: var(--nav-row-hover);
+}
+#mac_toggle_btn img {
+    width: 18px;
+    height: 18px;
+    object-fit: contain;
+    filter: invert(1) opacity(0.55);
+    transition: filter var(--nav-transition);
+}
+#mac_toggle_btn:hover img {
+    filter: invert(1) opacity(0.9);
+}
+
+/* brand mark — collapsed only (scaled-down logo style) */
+#mac_toggle_btn .toggle-brand {
+    display: none;
+    font-family: "Press Start 2P", var(--nav-font);
+    font-weight: 700;
+    font-size: 8px;
+    letter-spacing: -0.5px;
+    line-height: 1.2;
+    white-space: nowrap;
+    text-align: center;
+    color: var(--nav-text);
+    text-shadow: 0 2px 0 rgba(47, 90, 42, 1), 0 4px 0 rgba(0, 0, 0, 0.55);
+}
+
+
+/* ── Nav body + groups ── */
+.mac-nav {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-height: 0;
+    position: relative;
+    z-index: 1;
+}
+
+.mac-nav-group {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    margin-top: 16px;
+}
+.mac-nav-group:first-child {
+    margin-top: 6px;
+}
+
+.mac-nav-category {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    color: var(--nav-text-label);
+    padding: 0 12px 6px;
+    line-height: 1;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+
+/* ── Nav rows ── */
+.mac-nav-link {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    padding: 8px 12px;
+    font-size: 13.5px;
+    font-weight: 500;
+    color: var(--nav-text-muted);
+    text-decoration: none;
+    white-space: nowrap;
+    border: 1px solid transparent;
+    border-radius: var(--nav-radius);
+    position: relative;
+    transition: color var(--nav-transition), background var(--nav-transition);
+}
+
+.mac-nav-link .nav-label {
+    flex: 1;
+    white-space: nowrap;
+}
+
+.mac-nav-link .nav-icon {
+    width: 18px;
+    height: 18px;
+    object-fit: contain;
+    flex-shrink: 0;
+    opacity: 0.70;
+    filter: invert(1);
+    transition: opacity var(--nav-transition);
+}
+
+.mac-nav-link:hover {
+    background: var(--nav-row-hover);
+    color: var(--nav-text);
+}
+.mac-nav-link:hover .nav-icon {
+    opacity: 0.95;
+}
+
+/* active — clean white pill */
+.mac-nav-link.active {
+    background: rgba(255, 255, 255, 0.08);
+    color: #ffffff;
+    font-weight: 600;
+}
+.mac-nav-link.active:hover {
+    background: rgba(255, 255, 255, 0.11);
+}
+.mac-nav-link.active .nav-icon {
+    opacity: 1;
+}
+
+
+/* ── Footer: profile card (expanded) ── */
+.mac-sidebar-footer {
+    flex-shrink: 0;
+    margin-top: auto;
+    padding-top: 10px;
+    border-top: 1px solid var(--nav-glass-border);
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    position: relative;
+    z-index: 1;
+}
+
+.mac-profile-card {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 9px;
+    border-radius: 13px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--nav-glass-border);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.mac-profile-link {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex: 1;
+    min-width: 0;
+    color: inherit;
+    text-decoration: none;
+    border-radius: 9px;
+    transition: background var(--nav-transition);
+}
+
+.mac-profile-avatar {
+    display: block;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    overflow: hidden;
+    flex-shrink: 0;
+    border: 1.5px solid rgba(255, 255, 255, 0.18);
+    box-shadow: 0 0 10px rgba(56, 224, 247, 0.15);
+}
+.mac-profile-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.mac-profile-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    min-width: 0;
+    flex: 1;
+}
+.mac-profile-name {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--nav-text);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.mac-profile-email {
+    font-size: 11px;
+    color: var(--nav-text-label);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.mac-logout-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    flex-shrink: 0;
+    margin-left: auto;
+    border: none;
+    border-radius: 9px;
+    background: transparent;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background var(--nav-transition);
+}
+.mac-logout-btn:hover {
+    background: rgba(255, 255, 255, 0.08);
+}
+.mac-logout-btn .nav-icon {
+    width: 17px;
+    height: 17px;
+    object-fit: contain;
+    flex-shrink: 0;
+    opacity: 0.65;
+    filter: invert(1);
+    transition: opacity var(--nav-transition);
+}
+.mac-logout-btn:hover .nav-icon {
+    opacity: 1;
+}
+.mac-logout-btn .nav-label {
+    display: none; /* shown only when collapsed */
+}
+
+
+/* ── Main content offset ── */
+.admin-main-content {
+    margin-left: calc(var(--nav-sidebar-width) + var(--nav-gap) * 2);
+    width: calc(100% - (var(--nav-sidebar-width) + var(--nav-gap) * 2));
+    height: 100%;
+    padding: 60px 15px 0px 40px;
+    transition: margin-left var(--nav-transition), width var(--nav-transition);
+}
+
+
+/* ═══════════════════════════════════════
+   COLLAPSED STATE — icon + label, compact
+═══════════════════════════════════════ */
+
+.mac-sidebar.collapsed {
+    width: var(--nav-sidebar-collapsed-width);
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+body.sidebar-collapsed .admin-main-content {
+    margin-left: calc(var(--nav-sidebar-collapsed-width) + var(--nav-gap) * 2);
+    width: calc(100% - (var(--nav-sidebar-collapsed-width) + var(--nav-gap) * 2));
+}
+
+/* header → centred logo, divider kept */
+.mac-sidebar.collapsed .mac-sidebar-header {
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    padding: 2px 0 10px;
+}
+.mac-sidebar.collapsed .mac-app-text {
+    display: none;
+}
+
+/* brand button: text by default, expand icon + frame on hover (fixed height = no jump) */
+.mac-sidebar.collapsed #mac_toggle_btn {
+    width: 100%;
+    height: auto;
+    min-height: 38px;
+    margin-left: 0;
+    padding: 7px 0;
+    border: 1px solid transparent;
+    border-radius: 10px;
+    box-sizing: border-box;
+}
+.mac-sidebar.collapsed #mac_toggle_btn .toggle-brand {
+    display: block;
+}
+.mac-sidebar.collapsed #mac_toggle_btn .toggle-icon {
+    display: none;
+    width: 20px;
+    height: 20px;
+}
+.mac-sidebar.collapsed #mac_toggle_btn:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: var(--nav-glass-border);
+}
+.mac-sidebar.collapsed #mac_toggle_btn:hover .toggle-brand {
+    display: none;
+}
+.mac-sidebar.collapsed #mac_toggle_btn:hover .toggle-icon {
+    display: block;
+}
+
+/* hide category labels + even spacing */
+.mac-sidebar.collapsed .mac-nav-category {
+    display: none;
+}
+.mac-sidebar.collapsed .mac-nav-group {
+    gap: 4px;
+    margin-top: 4px;
+}
+.mac-sidebar.collapsed .mac-nav-group:first-child {
+    margin-top: 2px;
+}
+
+/* every item (nav / profile / logout) shares the same compact pill */
+.mac-sidebar.collapsed .mac-nav-link,
+.mac-sidebar.collapsed .mac-profile-link,
+.mac-sidebar.collapsed .mac-logout-btn {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    width: 100%;
+    min-height: 44px;
+    padding: 6px 2px;
+    border-radius: 10px;
+}
+.mac-sidebar.collapsed .mac-logout-btn {
+    height: auto;
+    margin-left: 0;
+}
+.mac-sidebar.collapsed .mac-profile-link:hover {
+    background: var(--nav-row-hover);
+}
+
+/* icons + labels */
+.mac-sidebar.collapsed .mac-nav-link .nav-icon,
+.mac-sidebar.collapsed .mac-logout-btn .nav-icon {
+    width: 20px;
+    height: 20px;
+}
+.mac-sidebar.collapsed .mac-nav-link .nav-label,
+.mac-sidebar.collapsed .mac-logout-btn .nav-label {
+    display: block;
+    width: 100%;
+    text-align: center;
+    font-size: 9.5px;
+    font-weight: 700;
+    line-height: 1.15;
+    white-space: normal;
+    word-break: break-word;
+}
+.mac-sidebar.collapsed .mac-logout-btn .nav-label {
+    color: var(--nav-text-muted);
+}
+
+/* footer → two separate stacked pills */
+.mac-sidebar.collapsed .mac-sidebar-footer {
+    gap: 4px;
+}
+.mac-sidebar.collapsed .mac-profile-card {
+    flex-direction: column;
+    gap: 4px;
+    padding: 0;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+}
+.mac-sidebar.collapsed .mac-profile-avatar {
+    width: 22px;
+    height: 22px;
+    box-shadow: none;
+}
+.mac-sidebar.collapsed .mac-profile-info {
+    align-items: center;
+    flex: none;
+}
+.mac-sidebar.collapsed .mac-profile-email {
+    display: none;
+}
+.mac-sidebar.collapsed .mac-profile-name {
+    font-size: 9.5px;
+    font-weight: 700;
+}
+
+
+/* ── Responsive: slide off-canvas on small screens ── */
+@media (max-width: 900px) {
+    .mac-sidebar {
+        transform: translateX(calc(-100% - var(--nav-gap)));
+        transition:
+            transform 0.35s cubic-bezier(0.32, 0.72, 0, 1),
+            width var(--nav-transition),
+            padding var(--nav-transition);
+    }
+    .mac-sidebar.open {
+        transform: translateX(0);
+    }
+    .admin-main-content {
+        margin-left: 0 !important;
+        padding: 24px 20px;
+    }
+}
+
+/* ── Global Toast Notification ── */
+.admin-toast {
+    position: fixed;
+    top: 24px;
+    right: 24px;
+    z-index: 9999;
+    padding: 14px 20px;
+    border-radius: 10px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #fff;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    animation: toast-in 0.3s ease;
+    transition: opacity 0.4s ease, transform 0.4s ease;
+}
+.admin-toast--success { background: rgba(34, 197, 94, 0.2); border: 1px solid rgba(34, 197, 94, 0.4); color: #4ade80; }
+.admin-toast--error   { background: rgba(248, 113, 113, 0.2); border: 1px solid rgba(248, 113, 113, 0.4); color: #f87171; }
+.admin-toast--hide    { opacity: 0; transform: translateY(-10px); pointer-events: none; }
+@keyframes toast-in   { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }

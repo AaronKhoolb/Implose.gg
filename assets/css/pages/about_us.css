@@ -1,0 +1,192 @@
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+    background-color: #0f1216;
+}
+
+
+.about-container {
+    flex: 1;
+    max-width: 1200px; 
+    width: 100%;
+    margin: 0 auto;
+    padding: 120px 20px 60px 20px; 
+    box-sizing: border-box;
+}
+
+
+.about-card {
+    max-width: 850px; 
+    width: 100%;
+    margin: 0 auto 60px auto; 
+    background-color: #1e2329; 
+    border: 3px solid #2d323f; 
+    border-radius: 8px;
+    padding: 40px;
+    box-sizing: border-box;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    text-align: center;
+}
+
+.about-title {
+    font-family: "Press Start 2P", monospace;
+    font-size: 22px;
+    color: #ffffff;
+    margin-bottom: 30px;
+    text-shadow: 0 4px 0 #2f5a2a;
+}
+
+.about-description {
+    font-family: "Pixelify Sans", sans-serif;
+    font-size: 18px;
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.6;
+    margin-bottom: 20px;
+    text-align: justify;
+}
+
+.highlight-text {
+    color: #4e8c47;
+    font-weight: bold;
+}
+
+.about-stats {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin-top: 35px;
+    border-top: 2px dashed #2d323f;
+    padding-top: 25px;
+}
+
+.stat-box h3 {
+    font-family: "Press Start 2P", monospace;
+    font-size: 16px;
+    color: #4e8c47;
+    margin: 0 0 8px 0;
+}
+
+.stat-box p {
+    font-family: "Pixelify Sans", sans-serif;
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.5);
+    margin: 0;
+}
+
+
+
+.staff-section {
+    text-align: center;
+    width: 100%;
+}
+
+.staff-title {
+    font-family: "Press Start 2P", monospace;
+    font-size: 26px;
+    color: #ffffff;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+}
+
+.staff-subtitle {
+    font-family: "Pixelify Sans", sans-serif;
+    font-size: 18px;
+    color: #b1b5c4;
+    margin-bottom: 40px;
+}
+
+
+.staff-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 30px;
+    width: 100%;
+}
+
+.staff-card-item {
+    background-color: #1e2329;
+    border: 3px solid #2d323f; 
+    border-radius: 8px;
+    padding: 35px 20px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: all 0.2s ease;
+}
+
+
+.staff-card-item:hover {
+    transform: translateY(-4px);
+    border-color: #4e8c47; 
+    box-shadow: 0 6px 15px rgba(78, 140, 71, 0.2);
+}
+
+
+.pixel-icon {
+    width: 54px;
+    height: 54px;
+    object-fit: contain;
+    margin-bottom: 18px;
+    background-color: rgba(255, 255, 255, 0.02); 
+    border-radius: 4px;
+    transition: filter 0.2s ease;
+}
+
+.staff-card-item:hover .pixel-icon {
+    filter: drop-shadow(0 0 6px #4e8c47);
+}
+
+.staff-name {
+    font-family: "Pixelify Sans", sans-serif;
+    font-size: 24px;
+    color: #ffffff;
+    margin: 5px 0;
+}
+
+.staff-role {
+    font-family: "Pixelify Sans", sans-serif;
+    font-size: 14px;
+    color: #4e8c47; 
+    font-weight: bold;
+    display: block;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.staff-bio {
+    font-family: "Inter", sans-serif;
+    font-size: 14px;
+    line-height: 1.5;
+    color: rgba(255, 255, 255, 0.75);
+    margin: 0;
+    text-align: justify;
+}
+
+
+.guest-footer {
+    text-align: center;
+    padding: 25px 0;
+    margin-top: 60px;
+}
+
+
+@media (max-width: 950px) {
+    .staff-grid {
+        grid-template-columns: repeat(2, 1fr); 
+        gap: 20px;
+    }
+}
+
+@media (max-width: 600px) {
+    .staff-grid {
+        grid-template-columns: 1fr; 
+        gap: 20px;
+    }
+    .staff-title { font-size: 18px; }
+    .staff-subtitle { font-size: 14px; }
+    .about-card { padding: 25px 15px; }
+}

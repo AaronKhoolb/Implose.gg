@@ -1,0 +1,304 @@
+/*
+Programmer Name: Damian Loh Yi Feng
+Program Name: /assets/css/pages/user_feedback.css
+Description: Styles shared by every surface that renders course
+            emoji-feedback tiers:
+              - Rating pill on marketplace cards (.mkt-rate--*)
+              - Full feedback page (.mkt-fb-summary / .mkt-fb-item / …)
+              - Admin dashboard "Course Ratings" panel
+                (.course-rating-list / .course-rating-pill--*)
+            Kept in one file so tier colours stay consistent — palette
+            roughly mirrors Steam so the label is legible without
+            reading the number.
+First Written on: Saturday, 04-Jul-2026
+Edited on: Saturday, 04-Jul-2026
+*/
+
+
+/* -----------------------------------------------------------
+   Course rating pill (marketplace card + feedback page header)
+   ----------------------------------------------------------- */
+.mkt-rate {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 8px 12px;
+    margin-top: 8px;
+    text-decoration: none;
+    font-family: var(--font-input);
+    font-size: 12px;
+    border: 2px solid transparent;
+    background-color: rgba(255, 255, 255, 0.04);
+    transition: transform 120ms ease, filter 120ms ease;
+}
+
+.mkt-rate:hover {
+    transform: translateY(-1px);
+    filter: brightness(1.15);
+}
+
+.mkt-rate-label {
+    font-weight: var(--bold);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.mkt-rate-count {
+    color: var(--text-muted);
+}
+
+.mkt-rate--vpos {
+    background-color: rgba(102, 192, 244, 0.18);
+    border-color:     rgba(102, 192, 244, 0.75);
+    color:            #a4dcff;
+}
+
+.mkt-rate--pos {
+    background-color: rgba(90, 155, 213, 0.18);
+    border-color:     rgba(90, 155, 213, 0.7);
+    color:            #b7d7f2;
+}
+
+.mkt-rate--mix {
+    background-color: rgba(180, 168, 100, 0.18);
+    border-color:     rgba(180, 168, 100, 0.7);
+    color:            #e8dda3;
+}
+
+.mkt-rate--neg {
+    background-color: rgba(200, 118, 62, 0.18);
+    border-color:     rgba(200, 118, 62, 0.7);
+    color:            #f0b892;
+}
+
+.mkt-rate--vneg {
+    background-color: rgba(215, 84, 55, 0.20);
+    border-color:     rgba(215, 84, 55, 0.75);
+    color:            #f5a191;
+}
+
+.mkt-rate--none {
+    background-color: rgba(120, 120, 130, 0.12);
+    border-color:     rgba(120, 120, 130, 0.6);
+    color:            var(--text-muted);
+}
+
+
+/* -----------------------------------------------------------
+   Marketplace course-feedback page
+   ----------------------------------------------------------- */
+.mkt-fb-summary {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    padding: 18px 20px;
+    margin-bottom: 20px;
+}
+
+.mkt-fb-summary-left {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.mkt-fb-avg {
+    font-family: var(--font-input);
+    font-weight: var(--bold);
+    font-size: 34px;
+    line-height: 1;
+    color: var(--text-light);
+}
+
+.mkt-fb-avg small {
+    font-size: 14px;
+    color: var(--text-muted);
+    font-weight: 400;
+    margin-left: 4px;
+}
+
+.mkt-fb-bars {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.mkt-fb-bar-row {
+    display: grid;
+    grid-template-columns: 90px 1fr 40px;
+    align-items: center;
+    gap: 10px;
+    font-size: 12px;
+    color: var(--text-muted);
+}
+
+.mkt-fb-bar-track {
+    height: 10px;
+    background-color: rgba(255, 255, 255, 0.06);
+    border: 1px solid var(--panel-border);
+    overflow: hidden;
+}
+
+.mkt-fb-bar-fill {
+    height: 100%;
+    background-color: #66c0f4;
+}
+
+.mkt-fb-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.mkt-fb-item {
+    display: grid;
+    grid-template-columns: 60px 1fr;
+    gap: 14px;
+    padding: 14px 16px;
+}
+
+.mkt-fb-emoji {
+    font-size: 34px;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mkt-fb-item-body {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.mkt-fb-item-head {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--font-input);
+    font-size: 13px;
+}
+
+.mkt-fb-author {
+    font-weight: var(--bold);
+    color: var(--text-light);
+}
+
+.mkt-fb-date {
+    color: var(--text-muted);
+    font-size: 12px;
+}
+
+.mkt-fb-comment {
+    font-size: 14px;
+    color: var(--text-light);
+    line-height: 1.5;
+    white-space: pre-wrap;
+    word-break: break-word;
+}
+
+.mkt-fb-comment--empty {
+    font-style: italic;
+    color: var(--text-muted);
+}
+
+.mkt-fb-empty {
+    text-align: center;
+    padding: 40px 20px;
+    color: var(--text-muted);
+}
+
+
+/* -----------------------------------------------------------
+   Admin dashboard "Course Ratings" panel
+   ----------------------------------------------------------- */
+.course-rating-list {
+    list-style: none;
+    padding: 6px 0 0 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.course-rating-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--admin-divider);
+}
+
+.course-rating-row:last-child {
+    border-bottom: none;
+}
+
+.course-rating-info {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    flex: 1;
+}
+
+.course-rating-title {
+    font-size: 14px;
+    color: var(--admin-text);
+    font-weight: 600;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.course-rating-meta {
+    font-size: 12px;
+    color: var(--admin-text-muted);
+    margin-top: 2px;
+}
+
+.course-rating-pill {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+    padding: 5px 10px;
+    border-radius: 999px;
+    border: 1px solid transparent;
+    white-space: nowrap;
+}
+
+.course-rating-pill--very_positive {
+    background: rgba(102, 192, 244, 0.15);
+    border-color: rgba(102, 192, 244, 0.55);
+    color: #66c0f4;
+}
+
+.course-rating-pill--positive {
+    background: rgba(90, 155, 213, 0.15);
+    border-color: rgba(90, 155, 213, 0.55);
+    color: #6ea9d8;
+}
+
+.course-rating-pill--mixed {
+    background: rgba(180, 168, 100, 0.15);
+    border-color: rgba(180, 168, 100, 0.55);
+    color: #c6b56b;
+}
+
+.course-rating-pill--negative {
+    background: rgba(200, 118, 62, 0.15);
+    border-color: rgba(200, 118, 62, 0.55);
+    color: #c8763e;
+}
+
+.course-rating-pill--very_negative {
+    background: rgba(215, 84, 55, 0.18);
+    border-color: rgba(215, 84, 55, 0.6);
+    color: #d75437;
+}
+
+.course-rating-pill--none {
+    background: rgba(120, 120, 130, 0.10);
+    border-color: rgba(120, 120, 130, 0.4);
+    color: var(--admin-text-muted);
+}

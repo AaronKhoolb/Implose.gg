@@ -1,0 +1,275 @@
+/*
+Programmer Name: Max
+Program Name: /assets/css/pages/user_chat.css
+Description: Chat drawer that slides in from the left of the dashboard.
+First Written on: Wednesday, 1-Jul-2026
+Edited on: Wednesday, 1-Jul-2026
+*/
+
+
+
+
+.chat-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 900;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.chat-backdrop.is-open {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+
+/* Drawer container */
+
+.chat-drawer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 380px;
+    height: 100%;
+    background-color: #1a1d24;
+    border-right: 3px solid #ef3e12;
+    z-index: 950;
+    display: flex;
+    flex-direction: column;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+    box-shadow: 4px 0 12px rgba(0, 0, 0, 0.4);
+}
+
+.chat-drawer.is-open {
+    transform: translateX(0);
+}
+
+
+/* Drawer header */
+
+.chat-drawer-header {
+    padding: 20px 25px;
+    border-bottom: 3px solid #2d323f;
+    background-color: rgba(30, 35, 41, 0.85);
+}
+
+.chat-drawer-title {
+    font-family: "Press Start 2P", monospace;
+    font-size: 18px;
+    color: #ffffff;
+    margin: 0;
+    text-align: center;
+    letter-spacing: 2px;
+}
+
+
+/* Close button "<" that sticks out on the right edge */
+
+.chat-close-btn {
+    position: absolute;
+    top: 50%;
+    right: -30px;
+    transform: translateY(-50%);
+    width: 30px;
+    height: 60px;
+    background-color: #ef3e12;
+    color: #ffffff;
+    border: none;
+    font-family: "Press Start 2P", monospace;
+    font-size: 20px;
+    cursor: pointer;
+    z-index: 951;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.chat-drawer.is-open .chat-close-btn {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.chat-close-btn:hover {
+    background-color: #d63600;
+}
+
+
+/*scrollable middle area*/
+
+.chat-messages {
+    flex: 1;
+    overflow-y: auto;
+    padding: 15px 20px;
+}
+
+.chat-loading,
+.chat-empty {
+    color: #888888;
+    text-align: center;
+    font-family: "Pixelify Sans", sans-serif;
+    font-size: 15px;
+    padding: 30px 10px;
+    font-style: italic;
+}
+
+
+/* Individual message card */
+
+.chat-message {
+    background-color: rgba(30, 35, 41, 0.85);
+    border-left: 3px solid #2d323f;
+    padding: 10px 14px;
+    margin-bottom: 10px;
+}
+
+.chat-message.is-own {
+    border-left-color: #ef3e12;
+}
+
+.chat-message-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 6px;
+}
+
+.chat-message-name {
+    font-family: "Pixelify Sans", sans-serif;
+    font-weight: bold;
+    color: #ffd447;
+    font-size: 14px;
+}
+
+.chat-message-time {
+    font-family: "Pixelify Sans", sans-serif;
+    font-size: 11px;
+    color: #888888;
+}
+
+.chat-message-text {
+    font-family: "Pixelify Sans", sans-serif;
+    font-size: 15px;
+    color: #ffffff;
+    line-height: 1.4;
+    margin: 0;
+    word-wrap: break-word;
+}
+
+.chat-message.is-deleted .chat-message-text {
+    color: #888888;
+    font-style: italic;
+}
+
+
+/* Message input form at the bottom */
+
+.chat-form {
+    display: flex;
+    gap: 8px;
+    padding: 15px;
+    border-top: 3px solid #2d323f;
+    background-color: rgba(20, 24, 28, 0.9);
+}
+
+.chat-input {
+    flex: 1;
+    padding: 10px 12px;
+    background-color: #14181c;
+    border: 2px solid #2d323f;
+    color: #ffffff;
+    font-family: "Pixelify Sans", sans-serif;
+    font-size: 15px;
+    outline: none;
+}
+
+.chat-input:focus {
+    border-color: #ef3e12;
+}
+
+.chat-send-btn {
+    padding: 10px 20px;
+    background-color: #ef3e12;
+    color: #ffffff;
+    border: none;
+    font-family: "Press Start 2P", monospace;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.chat-send-btn:hover {
+    background-color: #d63600;
+}
+
+
+/* Responsive - full width on small screens */
+
+@media (max-width: 500px) {
+    .chat-drawer {
+        width: 100%;
+        border-right: none;
+    }
+
+    .chat-close-btn {
+        right: 10px;
+        background-color: #ef3e12;
+    }
+}
+
+
+/* ── Chat Report Modal ── */
+
+#chat-report-modal {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+}
+
+.chat-report-panel {
+    width: 300px;
+    background: #1a1a24;
+    padding: 20px;
+    border: 2px solid #333;
+    position: relative;
+}
+
+.chat-report-panel h3 {
+    margin-top: 0;
+}
+
+.chat-report-panel p {
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.chat-report-panel textarea {
+    width: 100%;
+    margin-bottom: 15px;
+    background: #0f0f15;
+    border: 1px solid #444;
+    color: #fff;
+    padding: 8px;
+    font-family: inherit;
+    resize: none;
+}
+
+.chat-report-actions {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+}
+
+.chat-report-actions .btn-pixel {
+    padding: 5px 10px;
+}
+

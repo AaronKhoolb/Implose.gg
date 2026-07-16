@@ -1,0 +1,182 @@
+/*
+Programmer Name: Mr. Chong Ray Han
+Program Name: /assets/css/pages/user_player_lobby.css
+Description: Styles for the live quiz player waiting room
+First Written on: Thursday, 02-Jul-2026
+Edited on: Thursday, 02-Jul-2026
+*/
+
+/* extra tokens on top of global.css */
+:root {
+    --space-900: #0a0e16;
+    --space-800: #0d1016;
+    --gold-500: #f3b51f;
+    --moss-700: #2f5a2a;
+    --neon-cyan: #00d4ff;
+
+    --pixel-shadow-sm: 0 4px 0 rgba(0, 0, 0, 0.35);
+    --pixel-panel-shadow: 0 0 0 4px var(--panel-border), var(--pixel-shadow), var(--pixel-inner-shadow);
+    --pixel-text-shadow: 0 4px 0 var(--moss-700), 0 8px 0 rgba(0, 0, 0, 0.55);
+}
+
+/* full screen space background */
+html,
+body {
+    height: 100%;
+}
+
+body {
+    background-color: var(--space-900);
+    background-image: url("/Implose.gg-src/assets/images/bg/dashboard_bg.avif");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    color: #fff;
+    min-height: 100vh;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: rgba(10, 14, 22, 0.6);
+    z-index: 0;
+}
+
+.pixel-panel {
+    background-color: var(--panel-bg);
+    border: var(--pixel-border);
+    box-shadow: var(--pixel-panel-shadow);
+}
+
+.pixel-title {
+    color: var(--text-light);
+    text-shadow: var(--pixel-text-shadow);
+}
+
+.pl-shell {
+    position: relative;
+    z-index: 1;
+    min-height: 100vh;
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 40px 26px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.pl-logo {
+    height: 38px;
+    image-rendering: pixelated;
+    margin-bottom: 26px;
+}
+
+.pl-eyebrow {
+    font-family: var(--font-heading);
+    font-size: 9px;
+    color: var(--gold-500);
+    letter-spacing: 2px;
+    margin-bottom: 12px;
+}
+
+.pl-course {
+    font-size: 16px;
+    color: var(--text-muted);
+}
+
+.pl-title {
+    font-size: 32px;
+    margin-bottom: 16px;
+}
+
+.pl-code-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 22px;
+}
+
+.pl-code-label {
+    font-family: var(--font-heading);
+    font-size: 8px;
+    color: var(--text-muted);
+    letter-spacing: 1px;
+}
+
+.pl-code {
+    font-family: var(--font-heading);
+    font-size: 18px;
+    color: var(--neon-cyan);
+    background: var(--space-800);
+    border: 3px solid var(--panel-border);
+    padding: 8px 14px;
+    letter-spacing: 4px;
+}
+
+.pl-status-panel {
+    width: 100%;
+    max-width: 460px;
+    padding: 20px 22px;
+    margin-bottom: 26px;
+}
+
+.pl-status {
+    font-size: 19px;
+    font-weight: var(--bold);
+}
+
+.pl-countdown {
+    font-size: 15px;
+    color: var(--text-muted);
+    margin-top: 6px;
+}
+
+.pl-countdown b {
+    font-family: var(--font-heading);
+    font-size: 13px;
+    color: var(--gold-500);
+}
+
+.pl-players-head {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font-heading);
+    font-size: 11px;
+    color: var(--text-light);
+    margin-bottom: 14px;
+}
+
+.pl-count {
+    color: var(--gold-500);
+}
+
+.pl-players {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+}
+
+.pl-player {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 16px;
+}
+
+.pl-avatar {
+    width: 30px;
+    height: 30px;
+    image-rendering: pixelated;
+}
+
+.pl-name {
+    font-size: 16px;
+    font-weight: var(--bold);
+}

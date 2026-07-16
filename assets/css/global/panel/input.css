@@ -1,0 +1,63 @@
+/*
+Programmer Name: Mr. Khoo Lay Bin
+Program Name: /assets/css/global/panel/input.css
+Description: Create a global txt container css for all pages that need a txt box, txt area for edit, create....
+First Written on: Wednesday, 27-May-2026
+Edited on: Wednesday, 27-May-2026
+*/
+
+.txt-container {
+    width: 100%;
+    box-shadow: none;
+    display: flex;
+    align-items: center;
+    border-radius: 13px;
+    padding: 5px 10px;
+    box-sizing: border-box;
+    opacity: 0.8;
+}
+
+.txt-container:hover {
+    opacity: 1;
+}
+
+
+.txt-container:focus-within {
+    opacity: 0.8;
+    border-color: var(--green-primary);
+}
+
+.txt-container input,
+.txt-container textarea {
+    width: 100%;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    color: #ffffff;
+    line-height: 1.5;
+}
+
+
+.txt-container input::placeholder,
+.txt-container textarea::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.txt-container input {
+    margin: 7px 0px;
+}
+
+.txt-container textarea {
+    min-height: 80px;
+    resize: vertical;
+    padding: 4px 0;
+}
+
+
+.txt-container:has(textarea) {
+    align-items: flex-start;
+}
+
+.txt-container:has(textarea) .clear-btn {
+    margin-top: 4px;
+}

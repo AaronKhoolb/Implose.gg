@@ -1,0 +1,92 @@
+/*
+Programmer Name: Mr. Khoo Lay Bin
+Program Name: /assets/css/pages/index.css
+Description: landing page css
+First Written on: Sunday, 05-Jul-2026
+Edited on: Sunday, 05-Jul-2026
+*/
+
+/* full-screen tint layer to tone down the mascot */
+.start-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 5;
+
+    background: rgba(0, 0, 0, 0.55);
+    border: none;
+    text-decoration: none;
+
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    padding-bottom: 6vh;
+
+    cursor: url("/Implose.gg-src/assets/images/icons/cursor.svg") 2 2, pointer;
+}
+
+.start-hint {
+    font-size: 28px;
+    letter-spacing: 0.06em;
+
+    animation: tap-blink 1.4s ease-in-out infinite;
+
+    cursor: url("/Implose.gg-src/assets/images/icons/hand.svg") 8 2, pointer;
+}
+
+@keyframes tap-blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.15; }
+}
+
+
+/* corner btn */
+.index-corner-actions {
+    position: fixed;
+    left: 40px;
+    bottom: 65px;
+    z-index: 10;
+
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    align-items: flex-start;
+}
+
+.index-corner-actions-right {
+    left: auto;
+    right: 40px;
+    align-items: flex-end;
+}
+
+
+/* yellow btn */
+.btn-pixel-yellow {
+    background-color: #f3b51f;
+    color: #1b2029;
+    text-shadow: 0 3px 0 rgba(0, 0, 0, 0.25);
+}
+
+.btn-pixel-yellow:hover {
+    background-color: #ffc93d;
+}
+
+.btn-pixel-yellow img {
+    filter: brightness(0) invert(1);
+    pointer-events: none;
+}
+
+.index-corner-btn {
+    padding: 12px 14px;
+}
+
+.index-corner-btn img {
+    width: 26px;
+    height: 26px;
+    pointer-events: none;
+}
+
+.index-account-btn img,
+.index-download-btn img {
+    filter: brightness(0) invert(1);
+    pointer-events: none;
+}

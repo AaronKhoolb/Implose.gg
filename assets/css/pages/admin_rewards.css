@@ -1,0 +1,690 @@
+/*
+Programmer Name: Mr. Ng Jiunn Chyn
+Program Name: /assets/css/pages/admin_rewards.css
+Description: Admin Rewards management page styles
+            - Reuses admin design tokens from admin_nav.css
+            - Reuses form patterns from admin_edit_user.css
+            - Reward table with image thumbnails
+            - PHP-driven delete confirmation modal
+First Written on: Wednesday, 25-Jun-2026
+Edited on: Wednesday, 02-Jul-2026
+*/
+
+
+/* ── Page Header ── */
+
+.rw-page-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 28px;
+    flex-wrap: wrap;
+}
+
+.rw-page-header-left h1 {
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--admin-text);
+    margin: 0 0 6px;
+    letter-spacing: -0.01em;
+}
+
+.rw-page-header-left p {
+    font-size: 14px;
+    color: var(--admin-text-muted);
+    margin: 0;
+}
+
+.btn-create-reward {
+    padding: 10px 22px;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--admin-bg);
+    background: var(--admin-accent);
+    border: 1px solid var(--admin-accent);
+    border-radius: var(--admin-radius-sm);
+    cursor: pointer;
+    text-decoration: none;
+    transition: all var(--admin-transition);
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    box-shadow: 0 0 16px rgba(34, 211, 238, 0.28);
+    line-height: 1;
+    white-space: nowrap;
+}
+
+.btn-create-reward:hover {
+    background: #38e4ff;
+    border-color: #38e4ff;
+    box-shadow: 0 0 26px rgba(34, 211, 238, 0.5);
+    transform: translateY(-1px);
+}
+
+
+/* ── Stats Row ── */
+
+.rw-stats-row {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+    margin-bottom: 28px;
+    width: 100%;
+}
+
+.rw-stat-card {
+    background: var(--admin-surface);
+    border: 1px solid var(--admin-sidebar-border);
+    border-radius: var(--admin-radius);
+    padding: 24px 32px 30px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 12px;
+    min-width: 0;
+    transition: border-color var(--admin-transition), box-shadow var(--admin-transition);
+}
+
+.rw-stat-card:hover {
+    border-color: rgba(138, 235, 255, 0.2);
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.3);
+}
+
+.rw-stat-label {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.20em;
+    text-transform: uppercase;
+    color: var(--admin-text-muted);
+}
+
+.rw-stat-value {
+    font-size: 48px;
+    font-weight: 700;
+    color: var(--admin-text);
+    line-height: 1;
+}
+
+
+/* ── Flash Messages ── */
+
+.rw-flash {
+    padding: 14px 20px;
+    border-radius: var(--admin-radius);
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.rw-flash.success {
+    background: rgba(52, 211, 153, 0.1);
+    border: 1px solid rgba(52, 211, 153, 0.3);
+    color: #3dd19b;
+}
+
+.rw-flash.error {
+    background: rgba(248, 113, 113, 0.1);
+    border: 1px solid rgba(248, 113, 113, 0.3);
+    color: #f87171;
+}
+
+
+/* ── Table Card ── */
+
+.rw-table-card {
+    background: var(--admin-surface);
+    border: 1px solid var(--admin-sidebar-border);
+    border-radius: var(--admin-radius);
+    overflow: hidden;
+    margin-bottom: 28px;
+    width: 100%;
+}
+
+.rw-toolbar {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 20px;
+    border-bottom: 1px solid var(--admin-divider);
+}
+
+.rw-toolbar h3 {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--admin-text);
+    margin: 0;
+    margin-right: auto;
+}
+
+.rw-table-wrap {
+    overflow-x: auto;
+}
+
+.rw-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.rw-table th {
+    background: rgba(0, 0, 0, 0.25);
+    padding: 12px 16px;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--admin-text-muted);
+    text-align: left;
+    border-bottom: 1px solid var(--admin-divider);
+    white-space: nowrap;
+}
+
+.rw-table td {
+    padding: 14px 16px;
+    font-size: 13px;
+    color: var(--admin-text);
+    border-bottom: 1px solid var(--admin-divider);
+    vertical-align: middle;
+}
+
+.rw-table tbody tr {
+    transition: background var(--admin-transition);
+}
+
+.rw-table tbody tr:hover {
+    background: var(--admin-surface-hover);
+}
+
+.rw-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+
+/* Reward thumbnail */
+.rw-thumb {
+    width: 48px;
+    height: 48px;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid var(--admin-divider);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.rw-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.rw-thumb-placeholder {
+    font-size: 22px;
+    opacity: 0.3;
+}
+
+
+/* Points badge */
+.rw-points-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 4px 10px;
+    font-size: 12px;
+    font-weight: 700;
+    border-radius: 40px;
+    background: rgba(245, 158, 11, 0.12);
+    color: #fcd34d;
+    white-space: nowrap;
+}
+
+
+/* Stock badge */
+.rw-stock-badge {
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.rw-stock-badge.in-stock {
+    color: #4ADE80;
+}
+
+.rw-stock-badge.low-stock {
+    color: #f59e0b;
+}
+
+.rw-stock-badge.out-stock {
+    color: #ef4444;
+}
+
+
+/* Action buttons */
+.rw-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.rw-btn-edit,
+.rw-btn-delete {
+    padding: 6px 14px;
+    font-size: 12px;
+    font-weight: 600;
+    border-radius: var(--admin-radius-sm);
+    border: 1px solid;
+    cursor: pointer;
+    transition: all var(--admin-transition);
+    white-space: nowrap;
+}
+
+.rw-btn-edit {
+    background: rgba(34, 211, 238, 0.08);
+    border-color: rgba(34, 211, 238, 0.25);
+    color: var(--admin-accent-text);
+}
+
+.rw-btn-edit:hover {
+    background: rgba(34, 211, 238, 0.15);
+    border-color: rgba(34, 211, 238, 0.4);
+}
+
+.rw-btn-delete {
+    background: rgba(248, 113, 113, 0.08);
+    border-color: rgba(248, 113, 113, 0.25);
+    color: #f87171;
+}
+
+.rw-btn-delete:hover {
+    background: rgba(248, 113, 113, 0.15);
+    border-color: rgba(248, 113, 113, 0.4);
+}
+
+
+/* Table empty */
+.rw-table-empty {
+    text-align: center;
+    padding: 50px 24px;
+    color: var(--admin-text-muted);
+    font-size: 14px;
+}
+
+.rw-table-empty-icon {
+    font-size: 40px;
+    display: block;
+    margin-bottom: 12px;
+}
+
+
+/* ── Modal Overlay ── */
+
+.rw-modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 9999;
+    align-items: center;
+    justify-content: center;
+}
+
+.rw-modal-overlay.active {
+    display: flex;
+}
+
+.rw-modal {
+    background: var(--admin-surface);
+    border: 1px solid var(--admin-sidebar-border);
+    border-radius: var(--admin-radius);
+    width: 90%;
+    max-width: 560px;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.rw-modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 22px 28px;
+    border-bottom: 1px solid var(--admin-divider);
+}
+
+.rw-modal-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--admin-accent-text);
+}
+
+.rw-modal-close {
+    background: none;
+    border: none;
+    color: var(--admin-text-muted);
+    font-size: 20px;
+    cursor: pointer;
+    padding: 4px 8px;
+    transition: color var(--admin-transition);
+}
+
+.rw-modal-close:hover {
+    color: var(--admin-text);
+}
+
+.rw-modal-body {
+    padding: 28px;
+}
+
+
+/* Form fields in modal */
+.rw-form-field {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 20px;
+}
+
+.rw-form-field:last-child {
+    margin-bottom: 0;
+}
+
+.rw-label {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--admin-text);
+}
+
+.rw-label .req {
+    color: #f87171;
+    margin-left: 3px;
+}
+
+.rw-input {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--admin-divider);
+    border-radius: var(--admin-radius);
+    padding: 13px 16px;
+    font-size: 14px;
+    color: var(--admin-text);
+    outline: none;
+    transition: border-color var(--admin-transition), background var(--admin-transition), box-shadow var(--admin-transition);
+    box-sizing: border-box;
+}
+
+.rw-input::placeholder {
+    color: var(--admin-text-muted);
+    opacity: 0.55;
+}
+
+.rw-input:focus {
+    border-color: rgba(34, 211, 238, 0.4);
+    background: rgba(34, 211, 238, 0.04);
+    box-shadow: 0 0 0 3px var(--admin-accent-soft);
+}
+
+.rw-textarea {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--admin-divider);
+    border-radius: var(--admin-radius);
+    padding: 13px 16px;
+    font-size: 14px;
+    color: var(--admin-text);
+    outline: none;
+    resize: vertical;
+    min-height: 100px;
+    font-family: inherit;
+    transition: border-color var(--admin-transition), background var(--admin-transition), box-shadow var(--admin-transition);
+    box-sizing: border-box;
+}
+
+.rw-textarea::placeholder {
+    color: var(--admin-text-muted);
+    opacity: 0.55;
+}
+
+.rw-textarea:focus {
+    border-color: rgba(34, 211, 238, 0.4);
+    background: rgba(34, 211, 238, 0.04);
+    box-shadow: 0 0 0 3px var(--admin-accent-soft);
+}
+
+.rw-form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+
+/* Image upload area */
+.rw-upload-area {
+    width: 100%;
+    padding: 28px;
+    border: 2px dashed var(--admin-divider);
+    border-radius: var(--admin-radius);
+    text-align: center;
+    transition: border-color var(--admin-transition), background var(--admin-transition);
+    cursor: pointer;
+    position: relative;
+}
+
+.rw-upload-area:hover {
+    border-color: rgba(34, 211, 238, 0.3);
+    background: rgba(34, 211, 238, 0.03);
+}
+
+.rw-upload-area input[type="file"] {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.rw-upload-icon {
+    font-size: 32px;
+    display: block;
+    margin-bottom: 8px;
+}
+
+.rw-upload-text {
+    font-size: 13px;
+    color: var(--admin-text-muted);
+    line-height: 1.5;
+}
+
+.rw-upload-preview {
+    margin-top: 12px;
+    display: none;
+}
+
+.rw-upload-preview img {
+    max-width: 120px;
+    max-height: 90px;
+    border-radius: 8px;
+    object-fit: cover;
+    border: 1px solid var(--admin-divider);
+}
+
+
+/* Submit buttons */
+.rw-modal-footer {
+    padding: 0 28px 28px;
+    display: flex;
+    gap: 12px;
+    justify-content: flex-end;
+}
+
+.rw-btn-submit {
+    padding: 11px 28px;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--admin-bg);
+    background: var(--admin-accent);
+    border: 1px solid var(--admin-accent);
+    border-radius: var(--admin-radius-sm);
+    cursor: pointer;
+    transition: all var(--admin-transition);
+}
+
+.rw-btn-submit:hover {
+    background: #38e4ff;
+    box-shadow: 0 0 16px rgba(34, 211, 238, 0.3);
+}
+
+.rw-btn-cancel {
+    padding: 11px 28px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--admin-text-muted);
+    background: transparent;
+    border: 1px solid var(--admin-divider);
+    border-radius: var(--admin-radius-sm);
+    cursor: pointer;
+    transition: all var(--admin-transition);
+}
+
+.rw-btn-cancel:hover {
+    border-color: rgba(255, 255, 255, 0.2);
+    color: var(--admin-text);
+}
+
+
+/* ── Delete Confirm Modal ── */
+
+.rw-delete-modal {
+    max-width: 400px;
+    text-align: center;
+}
+
+.rw-delete-modal .rw-modal-body {
+    padding: 32px 28px;
+}
+
+.rw-delete-icon {
+    font-size: 48px;
+    display: block;
+    margin-bottom: 14px;
+}
+
+.rw-delete-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--admin-text);
+    margin-bottom: 8px;
+}
+
+.rw-delete-text {
+    font-size: 14px;
+    color: var(--admin-text-muted);
+    margin-bottom: 24px;
+    line-height: 1.6;
+}
+
+.rw-delete-name {
+    color: #f87171;
+    font-weight: 700;
+}
+
+.rw-delete-buttons {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+}
+
+.rw-btn-delete-confirm {
+    padding: 11px 28px;
+    font-size: 13px;
+    font-weight: 700;
+    color: white;
+    background: #dc2626;
+    border: 1px solid #dc2626;
+    border-radius: var(--admin-radius-sm);
+    cursor: pointer;
+    transition: all var(--admin-transition);
+}
+
+.rw-btn-delete-confirm:hover {
+    background: #ef4444;
+    box-shadow: 0 0 16px rgba(239, 68, 68, 0.3);
+}
+
+
+/* ── Responsive ── */
+
+@media (max-width: 900px) {
+    .rw-stats-row {
+        grid-template-columns: 1fr;
+    }
+
+    .rw-form-row {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+/* ── Row Action Icon Buttons (Edit / Delete) ──
+   Matches the pencil + trash icon buttons used on the Achievements page. */
+
+.row-actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 4px;
+}
+
+.row-action-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 6px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background var(--admin-transition), opacity var(--admin-transition);
+    opacity: 0.55;
+}
+
+.row-action-btn img {
+    width: 16px;
+    height: 16px;
+    display: block;
+    filter: invert(1) brightness(0.7);
+    transition: filter var(--admin-transition);
+}
+
+.row-action-btn:not(.delete):hover {
+    opacity: 1;
+    background: rgba(34, 211, 238, 0.08);
+}
+
+.row-action-btn:not(.delete):hover img {
+    filter: invert(76%) sepia(60%) saturate(400%) hue-rotate(155deg) brightness(105%);
+}
+
+.row-action-btn.delete:hover {
+    opacity: 1;
+    background: rgba(248, 113, 113, 0.08);
+}
+
+.row-action-btn.delete:hover img {
+    filter: invert(60%) sepia(50%) saturate(600%) hue-rotate(320deg) brightness(110%);
+}
+
+/* Force the reward card header coin icon to render white (overrides the shared invert filter) */
+.eu-card-header .eu-card-header-icon {
+    filter: brightness(0) invert(1);
+}

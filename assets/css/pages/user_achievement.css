@@ -1,0 +1,384 @@
+/*
+Programmer Name: Damian Loh Yi Feng
+Program Name: /assets/css/pages/user_achievement.css
+Description: User Achievement Page styling — pixel-panel grid of badges with
+            unlocked (colour) / locked (grayscale) variants, progress bar,
+            and filter tabs. Uses the global pixel design tokens and fonts.
+First Written on: Saturday, 27-Jun-2026
+Edited on: Saturday, 27-Jun-2026
+*/
+
+
+/* ── Page container ── */
+.ach-page {
+    width: 96%;
+    max-width: 1440px;
+    margin: 0 auto;
+    padding-top: 8px;
+}
+
+
+/* ── Header ── */
+
+.ach-page-head {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    margin-bottom: 28px;
+}
+
+.ach-page-title {
+    font-size: 50px;
+}
+
+.ach-page-subtitle {
+    font-family: var(--font-body);
+    font-size: 16px;
+    color: var(--text-muted);
+}
+
+
+/* ── Progress strip (pixel-panel) ── */
+
+.ach-progress {
+    padding: 18px 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 6px;
+}
+
+.ach-progress-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+}
+
+.ach-progress-stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 4px;
+}
+
+.ach-stat-num {
+    font-family: var(--font-heading);
+    font-size: 18px;
+    line-height: 1.1;
+    color: var(--text-light);
+    text-shadow:
+        0 3px 0 rgba(47, 90, 42, 1),
+        0 6px 0 rgba(0, 0, 0, 0.55);
+}
+
+.ach-stat-label {
+    font-family: var(--font-body);
+    font-size: 13px;
+    color: var(--text-muted);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
+
+.ach-progress-track {
+    width: 100%;
+    height: 16px;
+    background: #0d1016;
+    border: 3px solid #0d1016;
+    box-shadow:
+        inset 0 3px 0 rgba(0, 0, 0, 0.55),
+        inset 0 -2px 0 rgba(255, 255, 255, 0.04);
+    overflow: hidden;
+}
+
+.ach-progress-fill {
+    height: 100%;
+    background: linear-gradient(180deg, var(--btn-red) 0%, var(--btn-red-hover) 70%, #ff7a4f 100%);
+    box-shadow:
+        inset 0 2px 0 rgba(255, 255, 255, 0.18),
+        inset 0 -3px 0 rgba(0, 0, 0, 0.45);
+    transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+
+/* ── Tabs ── */
+
+.ach-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 18px 0 24px;
+}
+
+.ach-tab {
+    /* extends .btn-pixel from global */
+    font-size: 14px;
+    padding: 10px 18px;
+    opacity: 0.85;
+}
+
+.ach-tab.active {
+    background-color: var(--btn-red);
+    opacity: 1;
+}
+
+.ach-tab.active:hover {
+    background-color: var(--btn-red-hover);
+}
+
+
+/* ── Grid ── */
+
+.ach-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 24px;
+    align-items: stretch;
+}
+
+
+/* ── Card (pixel-panel) ── */
+
+.ach-card {
+    padding: 18px;
+    display: grid;
+    grid-template-columns: 84px 1fr;
+    gap: 16px;
+    align-items: center;
+    transition: transform 0.18s ease;
+}
+
+.ach-card:hover {
+    transform: translateY(-2px);
+}
+
+
+/* ── Card badge ── */
+
+.ach-card-badge-wrap {
+    position: relative;
+    width: 84px;
+    height: 84px;
+    flex-shrink: 0;
+}
+
+.ach-card-badge {
+    width: 84px;
+    height: 84px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--panel-bg-light);
+    border: 3px solid #0d1016;
+    box-shadow: inset 0 -3px 0 rgba(0, 0, 0, 0.4);
+    overflow: hidden;
+    position: relative;
+}
+
+.ach-card-badge img {
+    width: 84px;
+    height: 84px;
+    object-fit: cover;
+    image-rendering: pixelated;
+    display: block;
+}
+
+.ach-card-badge--fallback::after {
+    content: '★';
+    font-family: var(--font-heading);
+    font-size: 34px;
+    color: var(--btn-red);
+    text-shadow: 0 3px 0 rgba(0, 0, 0, 0.6);
+}
+
+
+/* ── Lock overlay (locked variant only) ── */
+
+.ach-card-lock {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.55);
+    pointer-events: none;
+}
+
+.ach-card-lock img {
+    width: 32px;
+    height: 32px;
+    filter: brightness(0) invert(1);
+    opacity: 0.85;
+    image-rendering: pixelated;
+}
+
+
+/* ── Card body ── */
+
+.ach-card-body {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    min-width: 0;
+}
+
+.ach-card-title {
+    font-family: var(--font-body);
+    font-size: 18px;
+    font-weight: var(--bold);
+    color: var(--text-light);
+    line-height: 1.15;
+    text-shadow: 0 2px 0 rgba(0, 0, 0, 0.6);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.ach-card-desc {
+    font-size: 13px;
+    color: var(--text-muted);
+    line-height: 1.35;
+    overflow: hidden;
+    min-height: 36px;
+}
+
+.ach-card-meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap; /* let tags drop to a new line if the card is narrow */
+    gap: 6px 8px;
+    margin-top: 6px;
+}
+
+.ach-card-tag {
+    font-family: var(--font-heading);
+    font-size: 8px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    padding: 5px 9px;
+    border: 2px solid #0d1016;
+    line-height: 1;
+    text-shadow: 0 2px 0 rgba(0, 0, 0, 0.55);
+}
+
+.ach-card-tag--unlocked {
+    background: rgba(46, 213, 115, 0.18);
+    color: #6cf6a5;
+    border-color: rgba(46, 213, 115, 0.5);
+}
+
+.ach-card-tag--locked {
+    background: rgba(255, 255, 255, 0.04);
+    color: var(--text-muted);
+    border-color: var(--panel-border);
+}
+
+.ach-card-points {
+    font-family: var(--font-heading);
+    font-size: 9px;
+    letter-spacing: 0.04em;
+    color: #ffd966;
+    padding: 5px 8px;
+    background: rgba(255, 217, 102, 0.12);
+    border: 2px solid rgba(255, 217, 102, 0.4);
+    text-shadow: 0 2px 0 rgba(0, 0, 0, 0.55);
+    line-height: 1;
+}
+
+
+/* ── Unlocked variant — green pixel frame ── */
+
+.ach-card--unlocked {
+    border-color: #2ed573;
+    box-shadow:
+        inset 0 -3px 0 rgba(0, 0, 0, 0.4),
+        0 0 0 3px rgba(46, 213, 115, 0.35),
+        0 0 12px rgba(46, 213, 115, 0.25);
+}
+
+.ach-card--unlocked .ach-card-badge {
+    border-color: #2ed573;
+    box-shadow:
+        inset 0 -3px 0 rgba(0, 0, 0, 0.4),
+        0 0 0 2px rgba(46, 213, 115, 0.4);
+}
+
+
+/* ── Locked variant — grayscale, dimmed ── */
+
+.ach-card--locked .ach-card-badge img {
+    filter: grayscale(1) brightness(0.55);
+}
+
+.ach-card--locked .ach-card-badge--fallback::after {
+    color: var(--text-muted);
+    opacity: 0.6;
+}
+
+.ach-card--locked .ach-card-title,
+.ach-card--locked .ach-card-desc {
+    color: var(--text-muted);
+    text-shadow: none;
+}
+
+.ach-card--locked .ach-card-points {
+    color: rgba(255, 217, 102, 0.5);
+    border-color: rgba(255, 217, 102, 0.2);
+    background: rgba(255, 217, 102, 0.04);
+}
+
+.ach-card--locked:hover {
+    transform: none;
+}
+
+
+/* ── Empty state ── */
+
+.ach-empty {
+    grid-column: 1 / -1;
+    padding: 48px 24px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    align-items: center;
+}
+
+.ach-empty-title {
+    font-family: var(--font-heading);
+    font-size: 18px;
+}
+
+.ach-empty-desc {
+    font-size: 14px;
+    color: var(--text-muted);
+    margin: 0;
+}
+
+
+/* ── Responsive ── */
+
+@media (max-width: 900px) {
+    .ach-progress-stats {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+    .ach-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 600px) {
+    .ach-card {
+        grid-template-columns: 64px 1fr;
+        gap: 12px;
+        padding: 14px;
+    }
+    .ach-card-badge-wrap,
+    .ach-card-badge,
+    .ach-card-badge img {
+        width: 64px;
+        height: 64px;
+    }
+}
