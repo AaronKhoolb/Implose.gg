@@ -275,5 +275,5 @@ Implose.gg-src/
 ## Contributors
 
 <a href="https://github.com/AaronKhoolb/Implose.gg/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=AaronKhoolb/Implose.gg&v=1" alt="Contributors" />
+  <img src="https://contrib.rocks/image?repo=AaronKhoolb/Implose.gg&v=2" alt="Contributors" />
 </a>
