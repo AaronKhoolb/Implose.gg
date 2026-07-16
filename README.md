@@ -5,8 +5,7 @@
 <h1 align="center">Implose.gg</h1>
 
 <p align="center">
-  A pixel-styled PWA that turns solo study into a live multiplayer quiz — with AI explanations, a course marketplace, achievements, and rewards.<br/>
-  Developed as an individual degree assignment covering full-stack web development.
+  A pixel-styled PWA that turns solo study into a live multiplayer quiz — with AI explanations, a course marketplace, achievements, and rewards.
 </p>
 
 ---
